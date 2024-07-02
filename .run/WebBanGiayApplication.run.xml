@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="WebBanGiayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="web_ban_giay" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.web_ban_giay.WebBanGiayApplication" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
