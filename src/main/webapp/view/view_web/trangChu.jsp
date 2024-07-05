@@ -2,6 +2,7 @@
 <%@ taglib prefix="f" uri="jakarta.tags.functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!doctype html>
 <html class="no-js" lang="">
@@ -18,19 +19,12 @@
 
     <!-- Bootstrap CSS
         ============================================ -->
-    <%--    <link rel="stylesheet" href="/temp_web/css/bootstrap.min.css">--%>
+    <link rel="stylesheet" href="/temp_web/css/bootstrap.min.css">
     <!-- Bootstrap CSS
         ============================================ -->
-    <%--    <link rel="stylesheet" href="/temp_web/css/font-awesome.min.css">--%>
+    <link rel="stylesheet" href="/temp_web/css/font-awesome.min.css">
     <!-- owl.carousel CSS
         ============================================ -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
     <link rel="stylesheet" href="/temp_web/css/owl.carousel.css">
     <link rel="stylesheet" href="/temp_web/css/owl.theme.css">
     <link rel="stylesheet" href="/temp_web/css/owl.transitions.css">
@@ -66,6 +60,8 @@
         ============================================ -->
     <script src="/temp_web/js/vendor/modernizr-2.8.3.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 </head>
 <body>
 <!-- Add your site or application content here -->
@@ -75,12 +71,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-7 col-md-offset-3 col-sm-9 hidden-xs">
-                    <div class="call-support" style="margin-left: 305px">
+                    <div class="call-support">
                         <p>Gọi hỗ trợ miễn phí: <span> (+84) 123 456 789</span></p>
                     </div>
-                </div>
-                <div class="col-md-2" style="display: flex; align-items: center; position: relative">
-                    <span style="position: absolute; right: -45px">Nguyễn Việt</span>
                 </div>
                 <div class="col-md-2 col-sm-3">
                     <div class="dashboard">
@@ -88,7 +81,7 @@
                             <ul>
                                 <li>
                                     <a href="#">
-                                        <i class="bi bi-person" style="font-size: x-large"></i>
+                                        <i class="bi bi-person" style="font-size: 20px"></i>
                                     </a>
                                     <ul>
                                         <li><a href="/store-customer/tai-khoan-cua-toi">Tài khoản của tôi</a></li>
@@ -98,13 +91,13 @@
                                 </li>
                                 <li class="search">
                                     <a href="#">
-                                        <i class="bi bi-search" style="font-size: 18px"></i>
+                                        <i class="fa fa-search"></i>
                                     </a>
                                     <ul class="search">
                                         <li>
                                             <form action="#">
                                                 <input type="text">
-                                                <button type="submit"><i class="bi bi-search"></i></button>
+                                                <button type="submit"><i class="fa fa-search"></i></button>
                                             </form>
                                         </li>
                                     </ul>
@@ -113,8 +106,11 @@
                         </div>
                         <div class="cart-menu">
                             <ul>
-                                <li><a href="#"> <i class="bi bi-cart" style="font-size: 20px"></i> <span
-                                        style="background: red; font-weight: bold">2</span> </a>
+                                <li>
+                                    <a href="#">
+                                        <i class="bi bi-cart2" style="font-size: 19px"></i> <span
+                                            style="background: red; font-weight: bold">2</span>
+                                    </a>
                                     <div class="cart-info">
                                         <ul>
                                             <li>
@@ -140,8 +136,8 @@
                                                 <div class="btn-remove"></div>
                                             </li>
                                         </ul>
-                                        <h3>Tổng tiền: <span> $951.00</span></h3>
-                                        <a href="checkout.html" class="checkout">Thanh toán</a>
+                                        <h3>Subtotal: <span> $951.00</span></h3>
+                                        <a href="/store-customer/thanh-toan-view" class="checkout">Thanh toán</a>
                                     </div>
                                 </li>
                             </ul>
@@ -167,7 +163,7 @@
                             <ul>
                                 <li><a href="/store-customer/trang-chu">Trang chủ</a>
                                 </li>
-                                <li class="mega-footwear"><a href="" id="san-pham-view">Sản phẩm</a>
+                                <li class="mega-footwear"><a href="shop.html">Sản phẩm</a>
                                     <div class="mega-menu footwear">
                                                 <span>
                                                     <a href="#">Footwear Man</a>
@@ -192,15 +188,13 @@
                                 <li><a href="shop.html">Sản phẩm</a>
                                     <ul>
                                         <li><a href="#">footwear men</a>
-
                                         </li>
                                         <li><a href="#">footwear women</a>
-
                                         </li>
                                     </ul>
                                 </li>
                                 <li><a href="/store-customer/gioi-thieu">Giới thiệu</a></li>
-                                <li><a href="/store-customer/liein-he">Liên hệ</a></li>
+                                <li><a href="/store-customer/lien-he">Liên hệ</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -294,33 +288,29 @@
     </div>
 </div>
 <!-- banner area end -->
-
-<!-- products area start -->
+<!-- product main items area start -->
+<!-- Main -->
 <div class="product-main-items">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="location">
                     <ul>
-                        <li><a href="/store-customer/trang-chu" title="go to homepage">Trang chủ<span>/</span></a></li>
+                        <li><a href="index.html" title="go to homepage">Trang chủ<span>/</span></a></li>
                         <li><strong> Sản phẩm</strong></li>
                     </ul>
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-sm-3">
                 <div class="product-sidebar">
                     <div class="sidebar-title">
-                        <h2 style="display: flex; align-items: center">
-                            <i class="bi bi-list-nested" style="font-size: 25px; margin-right: 13px"></i>
-                            Lựa chọn mua sắm
-                        </h2>
+                        <h2>Lựa chọn mua sắm</h2>
                     </div>
                     <div class="single-sidebar">
                         <div class="single-sidebar-title">
-                            <h3>Dòng sản phẩm</h3>
+                            <h3>Loại sản phẩm</h3>
                         </div>
                         <div class="single-sidebar-content">
                             <ul>
@@ -385,9 +375,6 @@
                     </div>
                 </div>
             </div>
-
-
-            <%--     Hiển thí sản phẩm       --%>
             <div class="col-sm-9">
                 <div class="product-bar">
                     <div class="sort-by">
@@ -412,227 +399,42 @@
                         per page
                     </div>
                 </div>
-
-
                 <div class="row">
-                    <div class="col-4">
-                        <div class="single-product">
-                            <div class="level-pro-new">
-                                <span>new</span>
-                            </div>
-                            <div class="product-img">
-                                <a href="/store-customer/chi-tiet-san-pham" style="background: rgba(80, 78, 78, 0.1)">
-                                    <img src="/temp_web/img/product/25.png" alt="" class="primary-img">
-                                    <img src="/temp_web/img/product/26.png" alt="" class="secondary-img">
-                                </a>
-                            </div>
-                            <div class="product-name text-center">
-                                <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-                            </div>
-                            <div class="price-rating text-center">
-                                <span class="old-price">$700.00</span>
-                                <span>$800.00</span>
-                            </div>
-                            <div class="actions">
-                                <button type="submit" class="cart-btn" title="Add to cart">Chi tiết sản phẩm</button>
-                                <ul class="add-to-link">
-                                    <li>
-                                        <a class="modal-view" data-target="#productModal" data-toggle="modal" href="#">
-                                            <i class="bi bi-eye-fill"></i>
+                    <c:forEach varStatus="i" items="${listSanPham}" var="sanPham">
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="col-md-12">
+                                <div class="single-product">
+                                    <div class="level-pro-new">
+                                        <span>Mua ngay</span>
+                                    </div>
+                                    <div class="product-img">
+                                        <a href="/store-customer/chi-tiet-san-pham/${sanPham.idSP}">
+                                            <img src="/image_product/${sanPham.hinhAnh1}" alt="" class="primary-img" style="height: 295px">
                                         </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <div class="single-product">
-                            <div class="level-pro-new">
-                                <span>new</span>
-                            </div>
-                            <div class="product-img">
-                                <a href="single-product.html">
-                                    <img src="/temp_web/img/product/25.png" alt="" class="primary-img">
-                                    <img src="/temp_web/img/product/26.png" alt="" class="secondary-img">
-                                </a>
-                            </div>
-                            <div class="product-name">
-                                <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-                            </div>
-                            <div class="price-rating">
-                                <span class="old-price">$700.00</span>
-                                <span>$800.00</span>
-                                <div class="ratings">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
+                                    </div>
+                                    <div class="product-name text-center">
+                                        <a href="/store-customer/chi-tiet-san-pham/${sanPham.idSP}" title="Fusce aliquam">${sanPham.tenSP}</a>
+                                    </div>
+                                    <div class="product-name text-center">
+                                        <a href="/store-customer/chi-tiet-san-pham/${sanPham.idSP}" title="Fusce aliquam">- ${sanPham.maSP} -</a>
+                                    </div>
+                                    <div class="price-rating text-center">
+                                        <span> <fmt:formatNumber value="${sanPham.giaBan}" type="currency" currencySymbol="đ" groupingUsed="true"/> </span>
+                                    </div>
+                                    <div class="actions">
+                                        <a href="/store-customer/chi-tiet-san-pham/${sanPham.idSP}"><button class="cart-btn" title="Add to cart">Xem chi tiết</button></a>
+                                        <ul class="add-to-link">
+                                            <li><a class="modal-view" data-target="#productModal" data-toggle="modal"
+                                                   href="#"> <i class="fa fa-search"></i></a></li>
+                                            <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
+                                            <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="actions">
-                                <button type="submit" class="cart-btn" title="Add to cart">add to cart</button>
-                                <ul class="add-to-link">
-                                    <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i
-                                            class="fa fa-search"></i></a></li>
-                                    <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-                                    <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-                                </ul>
-                            </div>
                         </div>
-                    </div>
+                    </c:forEach>
 
-                    <div class="col-4">
-                        <div class="single-product">
-                            <div class="level-pro-new">
-                                <span>new</span>
-                            </div>
-                            <div class="product-img">
-                                <a href="single-product.html">
-                                    <img src="/temp_web/img/product/25.png" alt="" class="primary-img">
-                                    <img src="/temp_web/img/product/26.png" alt="" class="secondary-img">
-                                </a>
-                            </div>
-                            <div class="product-name">
-                                <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-                            </div>
-                            <div class="price-rating">
-                                <span class="old-price">$700.00</span>
-                                <span>$800.00</span>
-                                <div class="ratings">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <button type="submit" class="cart-btn" title="Add to cart">add to cart</button>
-                                <ul class="add-to-link">
-                                    <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i
-                                            class="fa fa-search"></i></a></li>
-                                    <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-                                    <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <div class="single-product">
-                            <div class="level-pro-new">
-                                <span>new</span>
-                            </div>
-                            <div class="product-img">
-                                <a href="single-product.html">
-                                    <img src="/temp_web/img/product/25.png" alt="" class="primary-img">
-                                    <img src="/temp_web/img/product/26.png" alt="" class="secondary-img">
-                                </a>
-                            </div>
-                            <div class="product-name">
-                                <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-                            </div>
-                            <div class="price-rating">
-                                <span class="old-price">$700.00</span>
-                                <span>$800.00</span>
-                                <div class="ratings">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <button type="submit" class="cart-btn" title="Add to cart">add to cart</button>
-                                <ul class="add-to-link">
-                                    <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i
-                                            class="fa fa-search"></i></a></li>
-                                    <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-                                    <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <div class="single-product">
-                            <div class="level-pro-new">
-                                <span>new</span>
-                            </div>
-                            <div class="product-img">
-                                <a href="single-product.html">
-                                    <img src="/temp_web/img/product/25.png" alt="" class="primary-img">
-                                    <img src="/temp_web/img/product/26.png" alt="" class="secondary-img">
-                                </a>
-                            </div>
-                            <div class="product-name">
-                                <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-                            </div>
-                            <div class="price-rating">
-                                <span class="old-price">$700.00</span>
-                                <span>$800.00</span>
-                                <div class="ratings">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <button type="submit" class="cart-btn" title="Add to cart">add to cart</button>
-                                <ul class="add-to-link">
-                                    <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i
-                                            class="fa fa-search"></i></a></li>
-                                    <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-                                    <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <div class="single-product">
-                            <div class="level-pro-new">
-                                <span>new</span>
-                            </div>
-                            <div class="product-img">
-                                <a href="single-product.html">
-                                    <img src="/temp_web/img/product/25.png" alt="" class="primary-img">
-                                    <img src="/temp_web/img/product/26.png" alt="" class="secondary-img">
-                                </a>
-                            </div>
-                            <div class="product-name">
-                                <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-                            </div>
-                            <div class="price-rating">
-                                <span class="old-price">$700.00</span>
-                                <span>$800.00</span>
-                                <div class="ratings">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <button type="submit" class="cart-btn" title="Add to cart">add to cart</button>
-                                <ul class="add-to-link">
-                                    <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i
-                                            class="fa fa-search"></i></a></li>
-                                    <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-                                    <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
                     <div class="col-md-12">
                         <div class="toolbar-bottom">
                             <ul>
@@ -640,8 +442,7 @@
                                 <li class="current"><a href="#">1</a></li>
                                 <li><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
-                                <li><a href="#"> <img src="/temp_web/img/product/pager_arrow_right.gif" alt=""> </a>
-                                </li>
+                                <li><a href="#"> <img src="/temp_web/img/product/pager_arrow_right.gif" alt=""> </a></li>
                             </ul>
                         </div>
                     </div>
@@ -650,36 +451,19 @@
         </div>
     </div>
 </div>
-<!-- products area end -->
-
-<!-- another banner area start -->
-<div class="another-banner-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="big-banner">
-                    <a href="#">
-                        <img src="/temp_web/img/banner/banner-10.jpg" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- another banner area end -->
-<!-- new products area start -->
-<div class="new-products-area">
+<!-- product main items area end -->
+<!-- feature products area start -->
+<div class="features-product-area">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="section-heading">
-                    <h2>NEW PRODUCTS</h2>
+                    <h2>FEATURED PRODUCTS</h2>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="new-product-slider">
+            <div class="feature-product-slider">
                 <div class="col-md-12">
                     <div class="single-product">
                         <div class="level-pro-new">
@@ -687,8 +471,44 @@
                         </div>
                         <div class="product-img">
                             <a href="single-product.html">
-                                <img src="/temp_web/img/product/25.png" alt="" class="primary-img">
-                                <img src="/temp_web/img/product/26.png" alt="" class="secondary-img">
+                                <img src="/temp_web/img/product/1.png" alt="" class="primary-img">
+                                <img src="/temp_web/img/product/2.png" alt="" class="secondary-img">
+                            </a>
+                        </div>
+                        <div class="product-name">
+                            <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
+                        </div>
+                        <div class="price-rating">
+                            <span class="old-price">$700.00</span>
+                            <span>$800.00</span>
+                            <div class="ratings">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <button type="submit" class="cart-btn" title="Add to cart">add to cart</button>
+                            <ul class="add-to-link">
+                                <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i
+                                        class="fa fa-search"></i></a></li>
+                                <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
+                                <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="single-product">
+                        <div class="level-pro-sale">
+                            <span>sale</span>
+                        </div>
+                        <div class="product-img">
+                            <a href="single-product.html">
+                                <img src="/temp_web/img/product/7.png" alt="" class="primary-img">
+                                <img src="/temp_web/img/product/8.png" alt="" class="secondary-img">
                             </a>
                         </div>
                         <div class="product-name">
@@ -759,44 +579,8 @@
                         </div>
                         <div class="product-img">
                             <a href="single-product.html">
-                                <img src="/temp_web/img/product/2.png" alt="" class="primary-img">
-                                <img src="/temp_web/img/product/8.png" alt="" class="secondary-img">
-                            </a>
-                        </div>
-                        <div class="product-name">
-                            <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-                        </div>
-                        <div class="price-rating">
-                            <span class="old-price">$700.00</span>
-                            <span>$800.00</span>
-                            <div class="ratings">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
-                            </div>
-                        </div>
-                        <div class="actions">
-                            <button type="submit" class="cart-btn" title="Add to cart">add to cart</button>
-                            <ul class="add-to-link">
-                                <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i
-                                        class="fa fa-search"></i></a></li>
-                                <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-                                <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-product">
-                        <div class="level-pro-sale">
-                            <span>sale</span>
-                        </div>
-                        <div class="product-img">
-                            <a href="single-product.html">
-                                <img src="/temp_web/img/product/1.png" alt="" class="primary-img">
-                                <img src="/temp_web/img/product/2.png" alt="" class="secondary-img">
+                                <img src="/temp_web/img/product/9.png" alt="" class="primary-img">
+                                <img src="/temp_web/img/product/10.png" alt="" class="secondary-img">
                             </a>
                         </div>
                         <div class="product-name">
@@ -828,8 +612,8 @@
                     <div class="single-product">
                         <div class="product-img">
                             <a href="single-product.html">
-                                <img src="/temp_web/img/product/17.png" alt="" class="primary-img">
-                                <img src="/temp_web/img/product/18.png" alt="" class="secondary-img">
+                                <img src="/temp_web/img/product/5.png" alt="" class="primary-img">
+                                <img src="/temp_web/img/product/6.png" alt="" class="secondary-img">
                             </a>
                         </div>
                         <div class="product-name">
@@ -864,8 +648,8 @@
                         </div>
                         <div class="product-img">
                             <a href="single-product.html">
-                                <img src="/temp_web/img/product/19.png" alt="" class="primary-img">
-                                <img src="/temp_web/img/product/20.png" alt="" class="secondary-img">
+                                <img src="/temp_web/img/product/3.png" alt="" class="primary-img">
+                                <img src="/temp_web/img/product/4.png" alt="" class="secondary-img">
                             </a>
                         </div>
                         <div class="product-name">
@@ -900,8 +684,8 @@
                         </div>
                         <div class="product-img">
                             <a href="single-product.html">
-                                <img src="/temp_web/img/product/21.png" alt="" class="primary-img">
-                                <img src="/temp_web/img/product/22.png" alt="" class="secondary-img">
+                                <img src="/temp_web/img/product/19.png" alt="" class="primary-img">
+                                <img src="/temp_web/img/product/20.png" alt="" class="secondary-img">
                             </a>
                         </div>
                         <div class="product-name">
@@ -933,8 +717,77 @@
                     <div class="single-product">
                         <div class="product-img">
                             <a href="single-product.html">
-                                <img src="/temp_web/img/product/23.png" alt="" class="primary-img">
-                                <img src="/temp_web/img/product/24.png" alt="" class="secondary-img">
+                                <img src="/temp_web/img/product/13.png" alt="" class="primary-img">
+                                <img src="/temp_web/img/product/14.png" alt="" class="secondary-img">
+                            </a>
+                        </div>
+                        <div class="product-name">
+                            <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
+                        </div>
+                        <div class="price-rating">
+                            <span class="old-price">$700.00</span>
+                            <span>$800.00</span>
+                            <div class="ratings">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <button type="submit" class="cart-btn" title="Add to cart">add to cart</button>
+                            <ul class="add-to-link">
+                                <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i
+                                        class="fa fa-search"></i></a></li>
+                                <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
+                                <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="single-product">
+                        <div class="product-img">
+                            <a href="single-product.html">
+                                <img src="/temp_web/img/product/15.png" alt="" class="primary-img">
+                                <img src="/temp_web/img/product/16.png" alt="" class="secondary-img">
+                            </a>
+                        </div>
+                        <div class="product-name">
+                            <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
+                        </div>
+                        <div class="price-rating">
+                            <span class="old-price">$700.00</span>
+                            <span>$800.00</span>
+                            <div class="ratings">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <button type="submit" class="cart-btn" title="Add to cart">add to cart</button>
+                            <ul class="add-to-link">
+                                <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i
+                                        class="fa fa-search"></i></a></li>
+                                <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
+                                <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="single-product">
+                        <div class="level-pro-new">
+                            <span>new</span>
+                        </div>
+                        <div class="product-img">
+                            <a href="single-product.html">
+                                <img src="/temp_web/img/product/17.png" alt="" class="primary-img">
+                                <img src="/temp_web/img/product/18.png" alt="" class="secondary-img">
                             </a>
                         </div>
                         <div class="product-name">
@@ -966,8 +819,22 @@
         </div>
     </div>
 </div>
-<!-- new products area end -->
-
+<!-- feature products area end -->
+<!-- another banner area start -->
+<div class="another-banner-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="big-banner">
+                    <a href="#">
+                        <img src="/temp_web/img/banner/banner-10.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- another banner area end -->
 
 <!-- newsleter area start -->
 <div class="newsleter-area">
@@ -1037,13 +904,13 @@
                         <div class="twitter-article">
                             <div class="twitter-img">
                                 <a href="#">
-                                    <img src="/temp_web/img/twitter/twitter-1.png" alt="">
+                                    <img src="img/twitter/twitter-1.png" alt="">
                                 </a>
                             </div>
                             <div class="twitter-text">
                                 <p>Raboda Fashion #Magento #Theme comes up with pure white and grey, which great show
                                     your products. Check it: </p>
-                                <a href="#" class="back-to-top">https://t.co/iu0OYBwti8</a>
+                                <a href="#">https://t.co/iu0OYBwti8</a>
                                 <div class="twitter-time">
                                     <a href="#">16h</a>
                                 </div>
@@ -1052,7 +919,7 @@
                         <div class="twitter-article">
                             <div class="twitter-img">
                                 <a href="#">
-                                    <img src="/temp_web/img/twitter/twitter-1.png" alt="">
+                                    <img src="img/twitter/twitter-1.png" alt="">
                                 </a>
                             </div>
                             <div class="twitter-text">
@@ -1114,7 +981,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="payment-icon">
-                    <img src="/temp_web/img/payment.png" alt="">
+                    <img src="img/payment.png" alt="">
                 </div>
             </div>
         </div>
@@ -1136,7 +1003,7 @@
                     <div class="modal-product">
                         <div class="product-images">
                             <div class="main-image images">
-                                <img alt="" src="/temp_web/img/product/3.png">
+                                <img alt="" src="/temp_web/img/product/quick-view.jpg">
                             </div>
                         </div>
 
@@ -1150,7 +1017,7 @@
                             <div class="quick-add-to-cart">
                                 <form method="post" class="cart">
                                     <div class="numbers-row">
-                                        <input type="number" id="french-hens" value="1">
+                                        <input type="number" id="french-hens" value="3">
                                     </div>
                                     <button class="single_add_to_cart_button" type="submit">Add to cart</button>
                                 </form>
@@ -1219,3 +1086,4 @@
 <script src="/temp_web/js/main.js"></script>
 </body>
 </html>
+
