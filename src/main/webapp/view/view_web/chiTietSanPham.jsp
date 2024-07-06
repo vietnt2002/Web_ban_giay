@@ -661,22 +661,11 @@
 
     //Hiển thị số lượng tồn thằng đầu tiên
     listKichThuoc = document.getElementsByName("kichThuoc");
-    tenKT = "";
-    for (var i=0; i<listKichThuoc.length; i++){
-        if (listKichThuoc.item(i).checked){
-            tenKT = listKichThuoc.item(i).value;
-            break
-        }
-    }
+    tenKT = listKichThuoc.item(0).value;
     listMauSac = document.getElementsByName("mauSac");
-    tenMS = "";
-    for (var i=0; i<listMauSac.length; i++){
-        if (listMauSac.item(i).checked){
-            tenMS = listMauSac.item(i).value;
-            break
-        }
-    }
-    var sl;
+    tenMS = listMauSac.item(0).value;
+
+    var sl = 0;
     listMauSize.forEach(mauSize =>{
         if (mauSize.tenMS == tenMS && mauSize.tenKT == tenKT){
             sl = mauSize.soLuong;
@@ -700,7 +689,7 @@
             }
         }
 
-        var soLuong;
+        var soLuong = 0;
         listMauSize.forEach(mauSize =>{
             if (mauSize.tenMS == tenMauSac && mauSize.tenKT == tenKichThuoc){
                 soLuong = mauSize.soLuong;
