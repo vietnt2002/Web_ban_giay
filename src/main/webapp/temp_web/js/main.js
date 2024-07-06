@@ -198,11 +198,26 @@ upsell-slider
     $(".qtybutton").on("click", function() {
         var $button = $(this);
         var oldValue = $button.parent().find("input").val();
+        var gb = document.getElementById("giaBan").innerText;
+        var giaBan = gb.replace(/\./g, '');
+        var tt = document.getElementById("tongTien").innerText;
+        var tongTien = tt.replace(/\./g, '');
         if ($button.text() == ">") {
             var newVal = parseFloat(oldValue) + 1;
+            tongTien = parseFloat(giaBan) * newVal;
+            var tongTienDinhDang = tongTien.toString();
+            document.getElementById("tongTien").innerText = tongTienDinhDang.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " đ";
         } else {
             // Don't allow decrementing below zero
+            debugger
             if (oldValue > 1) {
+                tt = document.getElementById("tongTien").innerText;
+                tongTien = tt.replace(/\./g, '').replace('đ', '').trim();
+                gb = document.getElementById("giaBan").innerText;
+                giaBan = gb.replace(/\./g, '').replace('đ', '').trim();
+                var TTien = parseFloat(tongTien) - giaBan;
+                var tongTienDinhDang = TTien.toString();
+                document.getElementById("tongTien").innerText = tongTienDinhDang.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " đ";
                 var newVal = parseFloat(oldValue) - 1;
             } else {
                 newVal = 1;

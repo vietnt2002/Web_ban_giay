@@ -3,6 +3,7 @@ package com.example.web_ban_giay.controller;
 import com.example.web_ban_giay.repositories.*;
 import com.example.web_ban_giay.response.KichThuocResponse;
 import com.example.web_ban_giay.response.MauSacResponse;
+import com.example.web_ban_giay.response.MauSizeResponse;
 import com.example.web_ban_giay.response.SanPhamResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,12 +52,22 @@ public class WebController {
             @PathVariable("idSP") String idSP,
             Model model
     ){
+        //Lấy ra chi tiết sản phẩm
         SanPhamResponse chiTietSanPham = chiTietSanPhamRepo.findByIdSP(idSP);
-        List<KichThuocResponse> listKichThuoc = kichThuocRepo.getKichThuocByIdSP(idSP);
-        List<MauSacResponse> listMauSac = mauSacRepo.getMauSacByIdSP(idSP);
         model.addAttribute("chiTietSanPham", chiTietSanPham);
+
+        //Lấy danh sách kích thước theo idSP
+        List<KichThuocResponse> listKichThuoc = kichThuocRepo.getKichThuocByIdSP(idSP);
         model.addAttribute("listKichThuoc", listKichThuoc);
+
+        //Lấy danh sách màu sắc theo idSP
+        List<MauSacResponse> listMauSac = mauSacRepo.getMauSacByIdSP(idSP);
         model.addAttribute("listMauSac", listMauSac);
+
+        //Lấy danh sách màu sắc, kích thước, số lượng và hình ảnh
+        List<MauSizeResponse> listMauSize = chiTietSanPhamRepo.getMauSizeSL(idSP);
+        model.addAttribute("listMauSize", listMauSize);
+
         return "/view/view_web/chiTietSanPham.jsp";
     }
 }

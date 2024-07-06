@@ -12,58 +12,40 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- favicon
-        ============================================ -->
+    <!-- favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/temp_web/img/favicon.ico">
 
-    <!-- Bootstrap CSS
-        ============================================ -->
-    <%--    <link rel="stylesheet" href="/temp_web/css/bootstrap.min.css">--%>
-    <!-- Bootstrap CSS
-        ============================================ -->
-    <%--    <link rel="stylesheet" href="/temp_web/css/font-awesome.min.css">--%>
-    <!-- owl.carousel CSS
-        ============================================ -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/temp_web/css/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/temp_web/css/font-awesome.min.css">
+    <!-- owl.carousel CSS -->
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <link rel="stylesheet" href="/temp_web/css/owl.carousel.css">
     <link rel="stylesheet" href="/temp_web/css/owl.theme.css">
     <link rel="stylesheet" href="/temp_web/css/owl.transitions.css">
-    <!-- jquery-ui CSS
-        ============================================ -->
+    <!-- jquery-ui CSS -->
     <link rel="stylesheet" href="/temp_web/css/jquery-ui.css">
-    <!-- meanmenu CSS
-        ============================================ -->
+    <!-- meanmenu CSS -->
     <link rel="stylesheet" href="/temp_web/css/meanmenu.min.css">
-    <!-- nivoslider CSS
-        ============================================ -->
+    <!-- nivoslider CSS -->
     <link rel="stylesheet" href="/temp_web/lib/css/nivo-slider.css">
     <link rel="stylesheet" href="/temp_web/lib/css/preview.css">
-    <!-- animate CSS
-        ============================================ -->
+    <!-- animate CSS -->
     <link rel="stylesheet" href="/temp_web/css/animate.css">
-    <!-- magic CSS
-        ============================================ -->
+    <!-- magic CSS -->
     <link rel="stylesheet" href="/temp_web/css/magic.css">
-    <!-- normalize CSS
-        ============================================ -->
+    <!-- normalize CSS -->
     <link rel="stylesheet" href="/temp_web/css/normalize.css">
-    <!-- main CSS
-        ============================================ -->
+    <!-- main CSS -->
     <link rel="stylesheet" href="/temp_web/css/main.css">
-    <!-- style CSS
-        ============================================ -->
+    <!-- style CSS -->
     <link rel="stylesheet" href="/temp_web/style.css">
-    <!-- responsive CSS
-        ============================================ -->
+    <!-- responsive CSS -->
     <link rel="stylesheet" href="/temp_web/css/responsive.css">
-    <!-- modernizr JS
-        ============================================ -->
+    <!-- modernizr JS -->
     <script src="/temp_web/js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
@@ -75,12 +57,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-7 col-md-offset-3 col-sm-9 hidden-xs">
-                    <div class="call-support" style="margin-left: 305px">
+                    <div class="call-support">
                         <p>Gọi hỗ trợ miễn phí: <span> (+84) 123 456 789</span></p>
                     </div>
-                </div>
-                <div class="col-md-2" style="display: flex; align-items: center; position: relative">
-                    <span style="position: absolute; right: -45px">Nguyễn Việt</span>
                 </div>
                 <div class="col-md-2 col-sm-3">
                     <div class="dashboard">
@@ -88,23 +67,23 @@
                             <ul>
                                 <li>
                                     <a href="#">
-                                        <i class="bi bi-person" style="font-size: x-large"></i>
+                                        <i class="bi bi-person" style="font-size: 20px"></i>
                                     </a>
                                     <ul>
                                         <li><a href="/store-customer/tai-khoan-cua-toi">Tài khoản của tôi</a></li>
                                         <li><a href="/store-customer/don-mua">Đơn mua</a></li>
-                                        <li><a href="/store-customer/dang-nhap">Đăng nhập</a></li>
+                                        <li><a href="/store-customer/dang-nhap-view">Đăng nhập</a></li>
                                     </ul>
                                 </li>
                                 <li class="search">
                                     <a href="#">
-                                        <i class="bi bi-search" style="font-size: 18px"></i>
+                                        <i class="fa fa-search"></i>
                                     </a>
                                     <ul class="search">
                                         <li>
                                             <form action="#">
                                                 <input type="text">
-                                                <button type="submit"><i class="bi bi-search"></i></button>
+                                                <button type="submit"><i class="fa fa-search"></i></button>
                                             </form>
                                         </li>
                                     </ul>
@@ -113,8 +92,11 @@
                         </div>
                         <div class="cart-menu">
                             <ul>
-                                <li><a href="#"> <i class="bi bi-cart" style="font-size: 20px"></i> <span
-                                        style="background: red; font-weight: bold">2</span> </a>
+                                <li>
+                                    <a href="#">
+                                        <i class="bi bi-cart2" style="font-size: 19px"></i> <span
+                                            style="background: red; font-weight: bold">2</span>
+                                    </a>
                                     <div class="cart-info">
                                         <ul>
                                             <li>
@@ -140,7 +122,7 @@
                                                 <div class="btn-remove"></div>
                                             </li>
                                         </ul>
-                                        <h3>Tổng tiền: <span> $951.00</span></h3>
+                                        <h3>Subtotal: <span> $951.00</span></h3>
                                         <a href="/store-customer/thanh-toan-view" class="checkout">Thanh toán</a>
                                     </div>
                                 </li>
@@ -167,7 +149,7 @@
                             <ul>
                                 <li><a href="/store-customer/trang-chu">Trang chủ</a>
                                 </li>
-                                <li class="mega-footwear"><a href="" id="san-pham-view">Sản phẩm</a>
+                                <li class="mega-footwear"><a href="shop.html">Sản phẩm</a>
                                     <div class="mega-menu footwear">
                                                 <span>
                                                     <a href="#">Footwear Man</a>
@@ -192,15 +174,13 @@
                                 <li><a href="shop.html">Sản phẩm</a>
                                     <ul>
                                         <li><a href="#">footwear men</a>
-
                                         </li>
                                         <li><a href="#">footwear women</a>
-
                                         </li>
                                     </ul>
                                 </li>
                                 <li><a href="/store-customer/gioi-thieu">Giới thiệu</a></li>
-                                <li><a href="/store-customer/liein-he">Liên hệ</a></li>
+                                <li><a href="/store-customer/lien-he">Liên hệ</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -219,7 +199,7 @@
             <div class="col-md-12">
                 <div class="location">
                     <ul>
-                        <li><a href="index.html" title="go to homepage">Trang chủ<span>/</span></a></li>
+                        <li><a href="index.html" title="go to homepage">Trang chủ<span>/</span></a>  </li>
                         <li><strong>Đăng ký</strong></li>
                     </ul>
                 </div>
@@ -228,23 +208,28 @@
     </div>
 </div>
 <div class="login-area ptb-120">
-    <div class="container w-50">
+    <div class="container">
         <div class="row">
-            <div class="login">
-                <div class="login-form-container">
-                    <div class="login-text">
-                        <h2>Register</h2>
-                        <span>Please Register using account detail bellow.</span>
-                    </div>
-                    <div class="login-form">
-                        <form action="#" method="post">
-                            <input type="text" name="user-name" placeholder="Username">
-                            <input type="password" name="user-password" placeholder="Password">
-                            <input name="user-email" placeholder="Email" type="email">
-                            <div class="button-box">
-                                <button type="submit" class="default-btn">Register</button>
-                            </div>
-                        </form>
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <div class="login">
+                    <div class="login-form-container">
+                        <div class="login-text">
+                            <h2>Đăng ký</h2>
+                        </div>
+                        <div class="login-form">
+                            <form action="#" method="post">
+                                <input type="text" name="user-name" placeholder="Tài khoản">
+                                <input type="password" name="user-password" placeholder="Mật khẩu">
+                                <input type="password" name="user-password" placeholder="Nhập lại mật khẩu">
+                                <input name="user-email" placeholder="Email" type="email">
+                                <div style="float: right; padding-top: 20px">
+                                    <span>Bạn đã có tài khoản? <a href="/store-customer/dang-nhap-view">Đăng nhập</a></span>
+                                </div>
+                                <div class="button-box">
+                                    <button type="submit" class="default-btn">Đăng ký</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

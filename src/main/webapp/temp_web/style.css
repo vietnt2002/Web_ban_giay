@@ -2553,7 +2553,7 @@ p.tag-rules {
 /*----------------------------------------*/
 
 .shopping-cart {
-    padding-bottom: 50px;
+    padding-bottom: 30px;
 }
 .page-title h3 {
     font-size: 17px;
@@ -3257,7 +3257,8 @@ button.check-button:hover,
     opacity: 1;
 }
 .login-toggle-btn {
-    padding-top: 20px;
+    padding-top: 25px;
+    padding-bottom: 15px;
 }
 .login-form-container input[type="checkbox"] {
     height: 15px;

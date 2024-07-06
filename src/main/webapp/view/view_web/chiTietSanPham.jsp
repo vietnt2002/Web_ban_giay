@@ -13,57 +13,42 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- favicon
-    ============================================ -->
+    <!--  favicon  -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
 
-    <!-- Google Fonts
-    ============================================ -->
+    <!--  Google Fonts  -->
     <link href='../../../fonts.googleapis.com/cssc9f6.css?family=Norican' rel='stylesheet' type='text/css'>
     <link href='../../../fonts.googleapis.com/csse3e5.css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='../../../fonts.googleapis.com/css4c5c.css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-    <!-- Bootstrap CSS
-    ============================================ -->
+    <!--  Bootstrap CSS  -->
     <link rel="stylesheet" href="/temp_web/css/bootstrap.min.css">
-    <!-- Bootstrap CSS
-    ============================================ -->
+    <!--  Bootstrap CSS -->
     <link rel="stylesheet" href="/temp_web/css/font-awesome.min.css">
-    <!-- owl.carousel CSS
-    ============================================ -->
+    <!--  owl.carousel CSS  -->
     <link rel="stylesheet" href="/temp_web/css/owl.carousel.css">
     <link rel="stylesheet" href="/temp_web/css/owl.theme.css">
     <link rel="stylesheet" href="/temp_web/css/owl.transitions.css">
-    <!-- jquery-ui CSS
-    ============================================ -->
+    <!--  jquery-ui CSS  -->
     <link rel="stylesheet" href="/temp_web/css/jquery-ui.css">
-    <!-- meanmenu CSS
-    ============================================ -->
+    <!--  meanmenu CSS  -->
     <link rel="stylesheet" href="/temp_web/css/meanmenu.min.css">
-    <!-- nivoslider CSS
-    ============================================ -->
+    <!--  nivoslider CSS  -->
     <link rel="stylesheet" href="/temp_web/lib/css/nivo-slider.css">
     <link rel="stylesheet" href="/temp_web/lib/css/preview.css">
-    <!-- animate CSS
-    ============================================ -->
+    <!--  animate CSS  -->
     <link rel="stylesheet" href="/temp_web/css/animate.css">
-    <!-- magic CSS
-    ============================================ -->
+    <!--  magic CSS  -->
     <link rel="stylesheet" href="/temp_web/css/magic.css">
-    <!-- normalize CSS
-    ============================================ -->
+    <!--  normalize CSS  -->
     <link rel="stylesheet" href="/temp_web/css/normalize.css">
-    <!-- main CSS
-    ============================================ -->
+    <!--  main CSS  -->
     <link rel="stylesheet" href="/temp_web/css/main.css">
-    <!-- style CSS
-    ============================================ -->
+    <!--  style CSS  -->
     <link rel="stylesheet" href="/temp_web/style.css">
-    <!-- responsive CSS
-    ============================================ -->
+    <!--  responsive CSS  -->
     <link rel="stylesheet" href="/temp_web/css/responsive.css">
-    <!-- modernizr JS
-    ============================================ -->
+    <!--  modernizr JS  -->
     <script src="/temp_web/js/vendor/modernizr-2.8.3.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -234,48 +219,51 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <div class="single-product-img tab-content">
-                    <div class="single-pro-main-image tab-pane active" id="pro-large-img-1">
-                        <a href="#"><img style="left: 0px; max-width: 99%;" class="optima_zoom" src="/image_product/${chiTietSanPham.hinhAnh1}" data-zoom-image="/image_product/${chiTietSanPham.hinhAnh1}" alt="optima"/></a>
-                    </div>
-                    <div class="single-pro-main-image tab-pane" id="pro-large-img-2">
-                        <a href="#"><img style="left: 0px; max-width: 99%;" class="optima_zoom" src="/image_product/${chiTietSanPham.hinhAnh2}" data-zoom-image="/image_product/${chiTietSanPham.hinhAnh2}" alt="optima"/></a>
-                    </div>
-                    <div class="single-pro-main-image tab-pane" id="pro-large-img-3">
-                        <a href="#"><img style="left: 0px; max-width: 99%;" class="optima_zoom" src="/image_product/${chiTietSanPham.hinhAnh3}" data-zoom-image="/image_product/${chiTietSanPham.hinhAnh3}" alt="optima"/></a>
-                    </div>
-                    <div class="single-pro-main-image tab-pane" id="pro-large-img-4">
-                        <a href="#"><img style="left: 0px; max-width: 99%;" class="optima_zoom" src="/image_product/${chiTietSanPham.hinhAnh4}" data-zoom-image="/image_product/${chiTietSanPham.hinhAnh4}" alt="optima"/></a>
-                    </div>
-                </div>
-                <div class="product-page-slider">
-                    <div class="single-product-slider">
-                        <a href="#pro-large-img-1" data-toggle="tab">
-                            <img src="/image_product/${chiTietSanPham.hinhAnh1}" alt="" style="max-width: 97%">
+                <div class="container-fluid">
+                    <div id="my-pics" class="carousel slide" data-ride="carousel" style="max-width: 100%;margin:auto;">
+                        <ol class="carousel-indicators">
+                            <li data-target="#my-pics" data-slide-to="0" class="active"></li>
+                            <li data-target="#my-pics" data-slide-to="1"></li>
+                            <li data-target="#my-pics" data-slide-to="2"></li>
+                            <li data-target="#my-pics" data-slide-to="3"></li>
+                        </ol>
+
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <img src="/image_product/${chiTietSanPham.hinhAnh1}" alt="Sunset over beach">
+                            </div>
+
+                            <div class="item">
+                                <img src="/image_product/${chiTietSanPham.hinhAnh2}" alt="Rob Roy Glacier">
+                            </div>
+
+                            <div class="item">
+                                <img src="/image_product/${chiTietSanPham.hinhAnh3}" alt="Longtail boats at Phi Phi">
+                            </div>
+
+                            <div class="item">
+                                <img src="/image_product/${chiTietSanPham.hinhAnh4}" alt="Longtail boats at Phi Phi">
+                            </div>
+                        </div>
+
+                        <a class="left carousel-control" href="#my-pics" role="button" data-slide="prev" style="background-image: none">
+                            <span class="icon-prev" aria-hidden="true" style="display: flex; justify-content: center; align-items: center; font-size: 55px"></span>
+                            <span class="sr-only">Previous</span>
                         </a>
-                    </div>
-                    <div class="single-product-slider">
-                        <a href="#pro-large-img-2" data-toggle="tab">
-                            <img src="/image_product/${chiTietSanPham.hinhAnh2}" alt="" style="max-width: 97%">
+                        <a class="right carousel-control" href="#my-pics" role="button" data-slide="next" style="background-image: none">
+                            <span class="icon-next" aria-hidden="true" style="display: flex; justify-content: center; align-items: center; font-size: 55px"></span>
+                            <span class="sr-only">Next</span>
                         </a>
+
                     </div>
-                    <div class="single-product-slider">
-                        <a href="#pro-large-img-3" data-toggle="tab">
-                            <img src="/image_product/${chiTietSanPham.hinhAnh3}" alt="" style="max-width: 97%">
-                        </a>
-                    </div>
-                    <div class="single-product-slider">
-                        <a href="#pro-large-img-4" data-toggle="tab">
-                            <img src="/image_product/${chiTietSanPham.hinhAnh4}" alt="" style="max-width: 97%">
-                        </a>
-                    </div>
+
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="single-product-details">
                     <a href="#" class="product-name">${chiTietSanPham.tenSP} - ${chiTietSanPham.maSP}</a>
                     <div class="item-price">
-                        <span><fmt:formatNumber value="${chiTietSanPham.giaBan}" type="currency" currencySymbol="đ" groupingUsed="true"/> </span>
+                        <span id="giaBan"><fmt:formatNumber value="${chiTietSanPham.giaBan}" type="currency" currencySymbol="đ" groupingUsed="true"/> </span>
                     </div>
                     <div class="single-product-info">
                         <p> ${chiTietSanPham.moTa} </p>
@@ -288,7 +276,7 @@
                             <div class="input-box" style="display: flex">
                                 <c:forEach varStatus="i" items="${listMauSac}" var="mauSac">
                                     <div class="form-check form-check-inline" style="margin-right: 15px">
-                                        <input class="form-check-input" type="radio" name="mauSac" id="${mauSac.idMS}" value="${mauSac.idMS}" <c:if test="${i.index==0}">checked</c:if>>
+                                        <input class="form-check-input" onchange="onchangeByMauSac('${mauSac.tenMS}')" type="radio" name="mauSac" id="${mauSac.idMS}" value="${mauSac.tenMS}" <c:if test="${i.index==0}">checked</c:if>>
                                         <label class="form-check-label" for="${mauSac.idMS}">${mauSac.tenMS}</label>
                                     </div>
                                 </c:forEach>
@@ -301,7 +289,7 @@
                             <div class="input-box" style="display: flex">
                                 <c:forEach varStatus="i" items="${listKichThuoc}" var="kichThuoc">
                                     <div class="form-check form-check-inline" style="margin-right: 15px">
-                                        <input class="form-check-input" type="radio" name="kichThuoc" id="${kichThuoc.idKT}" value="${kichThuoc.idKT}" <c:if test="${i.index==0}">checked</c:if>>
+                                        <input class="form-check-input" onchange="onchangeByKichThuoc('${kichThuoc.tenKT}')" type="radio" name="kichThuoc" id="${kichThuoc.idKT}" value="${kichThuoc.tenKT}" <c:if test="${i.index==0}">checked</c:if>>
                                         <label class="form-check-label" for="${kichThuoc.idKT}">${kichThuoc.tenKT}</label>
                                     </div>
                                 </c:forEach>
@@ -310,7 +298,7 @@
                         <div class="soLuongTon" style="margin-top: 24px">
                             <em style="color: red">*</em>
                             <span style="font-size: 16px; margin-right: 10px">Số lượng tồn: </span>
-                            <span style="font-weight: bold">${chiTietSanPham.soLuong}</span>
+                            <span style="font-weight: bold" id="soLuongTon">${chiTietSanPham.soLuong}</span>
                         </div>
                     </div>
                     <div class="cart-item">
@@ -333,6 +321,25 @@
     </div>
 </div>
 <!-- single product details end -->
+
+<!-- jQuery library -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<!-- Initialize Bootstrap functionality -->
+<script>
+    // Initialize tooltip component
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    // Initialize popover component
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+</script>
+
 
 <!-- related product area start-->
 <div class="related-product home2">
@@ -592,7 +599,7 @@
     </div>
 </div>
 <!-- footer top area end -->
-<!-- footer area start -->
+<!-- footer cuối -->
 <footer class="footer-area">
     <div class="container">
         <div class="row">
@@ -610,42 +617,123 @@
     </div>
     <a href="#" id="scrollUp"><i class="fa fa fa-arrow-up"></i></a>
 </footer>
-<!-- footer area end -->
+<!--          footer             -->
 
-<!-- jquery
-============================================ -->
+<!--  jquery  -->
 <script src="/temp_web/js/vendor/jquery-1.12.1.min.js"></script>
-<!-- bootstrap JS
-============================================ -->
+<!-- bootstrap JS  -->
 <script src="/temp_web/js/bootstrap.min.js"></script>
-<!-- wow JS
-============================================ -->
+<!--  wow JS  -->
 <script src="/temp_web/js/wow.min.js"></script>
-<!-- price-slider JS
-============================================ -->
+<!-- price-slider JS -->
 <script src="/temp_web/js/jquery-price-slider.js"></script>
-<!-- nivoslider JS
-============================================ -->
+<!--  nivoslider JS  -->
 <script src="/temp_web/lib/js/jquery.nivo.slider.js"></script>
 <script src="/temp_web/lib/home.js"></script>
-<!-- meanmenu JS
-============================================ -->
+<!--  meanmenu JS  -->
 <script src="/temp_web/js/jquery.meanmenu.js"></script>
-<!-- owl.carousel JS
-============================================ -->
+<!--  owl.carousel JS  -->
 <script src="/temp_web/js/owl.carousel.min.js"></script>
-<!-- elevatezoom JS
-============================================ -->
+<!--  elevatezoom JS  -->
 <script src="/temp_web/js/jquery.elevatezoom.js"></script>
-<!-- scrollUp JS
-============================================ -->
+<!--  scrollUp JS  -->
 <script src="/temp_web/js/jquery.scrollUp.min.js"></script>
-<!-- plugins JS
-============================================ -->
+<!--  plugins JS  -->
 <script src="/temp_web/js/plugins.js"></script>
-<!-- main JS
-============================================ -->
+<!--  main JS   -->
 <script src="/temp_web/js/main.js"></script>
 </body>
+<%--        js       --%>
+<script>
+    var listMauSize = [];
+    <c:forEach varStatus="i" items="${listMauSize}" var="mauSize">
+    var MauSize = {};
+    MauSize.tenMS = '${mauSize.tenMS}'
+    MauSize.tenKT = '${mauSize.tenKT}'
+    MauSize.soLuong = '${mauSize.soLuong}'
+    MauSize.hinhAnh1 = '${mauSize.hinhAnh1}'
+    MauSize.hinhAnh2 = '${mauSize.hinhAnh2}'
+    MauSize.hinhAnh3 = '${mauSize.hinhAnh3}'
+    MauSize.hinhAnh4 = '${mauSize.hinhAnh4}'
+    listMauSize.push(MauSize);
+    </c:forEach>
+    console.log(listMauSize);
+
+    //Hiển thị số lượng tồn thằng đầu tiên
+    listKichThuoc = document.getElementsByName("kichThuoc");
+    tenKT = "";
+    for (var i=0; i<listKichThuoc.length; i++){
+        if (listKichThuoc.item(i).checked){
+            tenKT = listKichThuoc.item(i).value;
+            break
+        }
+    }
+    listMauSac = document.getElementsByName("mauSac");
+    tenMS = "";
+    for (var i=0; i<listMauSac.length; i++){
+        if (listMauSac.item(i).checked){
+            tenMS = listMauSac.item(i).value;
+            break
+        }
+    }
+    var sl;
+    listMauSize.forEach(mauSize =>{
+        if (mauSize.tenMS == tenMS && mauSize.tenKT == tenKT){
+            sl = mauSize.soLuong;
+        }
+    })
+    if (sl < 0 || sl == null){
+        sl = 0;
+    }
+    document.getElementById("soLuongTon").textContent = sl;
+    //-------------------------------------------------------
+
+
+    //Hiển thị số lượng tồn sản phẩm theo màu sắc
+    function onchangeByMauSac(tenMauSac){
+        debugger
+        tenKichThuoc = "";
+        for (var i=0; i<listKichThuoc.length; i++){
+            if (listKichThuoc.item(i).checked){
+                tenKichThuoc = listKichThuoc.item(i).value;
+                break
+            }
+        }
+
+        var soLuong;
+        listMauSize.forEach(mauSize =>{
+            if (mauSize.tenMS == tenMauSac && mauSize.tenKT == tenKichThuoc){
+                soLuong = mauSize.soLuong;
+            }
+        })
+        if (soLuong < 0 || soLuong == null){
+            soLuong = 0;
+        }
+        document.getElementById("soLuongTon").textContent = soLuong;
+    }
+
+    //Hiển thị số lượng tồn sản phẩm theo kích thước
+    function onchangeByKichThuoc(tenKichThuoc){
+        tenMauSac = "";
+        for (var i=0; i<listMauSac.length; i++){
+            if (listMauSac.item(i).checked){
+                tenMauSac = listMauSac.item(i).value;
+                break
+            }
+        }
+
+        var soLuong;
+        listMauSize.forEach(mauSize => {
+            if (mauSize.tenKT == tenKichThuoc && mauSize.tenMS == tenMauSac){
+                soLuong = mauSize.soLuong;
+            }
+        })
+
+        if (soLuong < 0 || soLuong == null){
+            soLuong = 0;
+        }
+        document.getElementById("soLuongTon").textContent = soLuong;
+    }
+</script>
 </html>
 
