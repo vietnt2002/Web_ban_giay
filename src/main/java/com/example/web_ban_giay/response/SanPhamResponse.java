@@ -15,6 +15,7 @@ public class SanPhamResponse {
     private String idSP;
     private String maSP;
     private String tenSP;
+    private String tenMS;
     private String moTa;
     private String hinhAnh1;
     private String hinhAnh2;

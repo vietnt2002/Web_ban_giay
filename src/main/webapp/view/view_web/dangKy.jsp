@@ -48,6 +48,10 @@
     <!-- modernizr JS -->
     <script src="/temp_web/js/vendor/modernizr-2.8.3.min.js"></script>
 
+    <!-- SweetAlert2 JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body>
 <!-- Add your site or application content here -->
@@ -218,6 +222,9 @@
                         </div>
                         <div class="login-form">
                             <form action="#" method="post">
+                                <input type="text" name="hoTen" placeholder="Họ tên">
+                                <input type="text" name="sdt" placeholder="Số điện thoại">
+                                <input type="text" name="email" placeholder="Email">
                                 <input type="text" name="user-name" placeholder="Tài khoản">
                                 <input type="password" name="user-password" placeholder="Mật khẩu">
                                 <input type="password" name="user-password" placeholder="Nhập lại mật khẩu">

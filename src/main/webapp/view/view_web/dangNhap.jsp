@@ -51,7 +51,12 @@
     <!-- modernizr JS -->
     <script src="/temp_web/js/vendor/modernizr-2.8.3.min.js"></script>
 
+    <%--  Bootstrap icon  --%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- SweetAlert2 JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -222,9 +227,9 @@
                             <h2>Đăng nhập</h2>
                         </div>
                         <div class="login-form">
-                            <form action="#" method="post">
-                                <input type="text" name="user-name" placeholder="Tài khoản">
-                                <input type="password" name="user-password" placeholder="Mật khẩu" style="margin-bottom: 0px">
+                            <form method="post" action="/store-customer/dang-nhap">
+                                <input type="text" id="taiKhoan" name="taiKhoan" placeholder="Tài khoản">
+                                <input type="password" id="matKhau" name="matKhau" placeholder="Mật khẩu" style="margin-bottom: 0px">
                                 <div style="float: right">
                                     <a href="#">Quên mật khẩu?</a>
                                 </div>
@@ -252,7 +257,7 @@
         <div class="row">
             <div class="col-md-3 col-sm-4">
                 <div class="footer-contact">
-                    <img src="img/logo-white.png" alt="">
+                    <img src="/temp_web/img/logo-white.png" alt="">
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
                     <ul class="address">
                         <li>
@@ -386,5 +391,11 @@
 <!-- main JS -->
 <script src="/temp_web/js/main.js"></script>
 </body>
+
+<script>
+
+</script>
+
+
 </html>
 

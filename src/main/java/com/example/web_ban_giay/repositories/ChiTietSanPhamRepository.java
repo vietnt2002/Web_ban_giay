@@ -15,18 +15,20 @@ public interface ChiTietSanPhamRepository extends JpaRepository<ChiTietSanPham, 
     public static final int HET_HANG = 0;
 
     //Hiển thị danh sách sản phẩm trang chủ
-    @Query("select new com.example.web_ban_giay.response.SanPhamResponse(sp.id, sp.ma, sp.ten, ctsp.moTa, max (ha.hinhAnh1), max (ha.hinhAnh2), max (ha.hinhAnh3), max (ha.hinhAnh4), min(ctsp.soLuong), min(ctsp.giaBan)) " +
+    @Query("select new com.example.web_ban_giay.response.SanPhamResponse(sp.id, sp.ma, sp.ten, min(ms.ten), ctsp.moTa, max (ha.hinhAnh1), max (ha.hinhAnh2), max (ha.hinhAnh3), max (ha.hinhAnh4), min(ctsp.soLuong), min(ctsp.giaBan)) " +
             "from ChiTietSanPham ctsp " +
             "join SanPham sp on sp.id = ctsp.idSanPham.id " +
+            "join MauSac ms on ms.id = ctsp.idMauSac.id " +
             "join HinhAnh ha on ha.idCTSP.id = ctsp.id " +
             "group by sp.id, sp.ma, sp.ten, ctsp.moTa, sp.ngayTao " +
             "order by sp.ngayTao desc ")
     List<SanPhamResponse> getAllTrangChu();
 
     //Hiển thị chi tiết sản phẩm theo idSP
-    @Query("select new com.example.web_ban_giay.response.SanPhamResponse(sp.id, sp.ma, sp.ten, ctsp.moTa, max (ha.hinhAnh1), max (ha.hinhAnh2), max (ha.hinhAnh3), max (ha.hinhAnh4), min(ctsp.soLuong), min(ctsp.giaBan)) " +
+    @Query("select new com.example.web_ban_giay.response.SanPhamResponse(sp.id, sp.ma, sp.ten, min(ms.ten), ctsp.moTa, max (ha.hinhAnh1), max (ha.hinhAnh2), max (ha.hinhAnh3), max (ha.hinhAnh4), min(ctsp.soLuong), min(ctsp.giaBan)) " +
             "from ChiTietSanPham ctsp " +
             "join SanPham sp on sp.id = ctsp.idSanPham.id " +
+            "join MauSac ms on ms.id = ctsp.idMauSac.id " +
             "join HinhAnh ha on ha.idCTSP.id = ctsp.id " +
             "where sp.id = ?1 " +
             "group by sp.id, sp.ma, sp.ten, ctsp.moTa, sp.ngayTao")

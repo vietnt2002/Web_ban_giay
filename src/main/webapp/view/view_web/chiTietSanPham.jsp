@@ -50,8 +50,13 @@
     <link rel="stylesheet" href="/temp_web/css/responsive.css">
     <!--  modernizr JS  -->
     <script src="/temp_web/js/vendor/modernizr-2.8.3.min.js"></script>
-
+    <%--  Bootstrap icon  --%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- SweetAlert2 JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -205,7 +210,7 @@
             <div class="col-md-12">
                 <div class="location">
                     <ul>
-                        <li><a href="index.html" title="go to homepage">Trang chủ<span>/</span></a>  </li>
+                        <li><a href="/store-customer/trang-chu" title="go to homepage">Trang chủ<span>/</span></a>  </li>
                         <li><strong> Chi tiết sản phẩm</strong></li>
                     </ul>
                 </div>
@@ -230,19 +235,19 @@
 
                         <div class="carousel-inner" role="listbox">
                             <div class="item active">
-                                <img src="/image_product/${chiTietSanPham.hinhAnh1}" alt="Sunset over beach">
+                                <img id="hinhAnh1" src="/image_product/${chiTietSanPham.hinhAnh1}" alt="Sunset over beach">
                             </div>
 
                             <div class="item">
-                                <img src="/image_product/${chiTietSanPham.hinhAnh2}" alt="Rob Roy Glacier">
+                                <img id="hinhAnh2" src="/image_product/${chiTietSanPham.hinhAnh2}" alt="Rob Roy Glacier">
                             </div>
 
                             <div class="item">
-                                <img src="/image_product/${chiTietSanPham.hinhAnh3}" alt="Longtail boats at Phi Phi">
+                                <img id="hinhAnh3" src="/image_product/${chiTietSanPham.hinhAnh3}" alt="Longtail boats at Phi Phi">
                             </div>
 
                             <div class="item">
-                                <img src="/image_product/${chiTietSanPham.hinhAnh4}" alt="Longtail boats at Phi Phi">
+                                <img id="hinhAnh4" src="/image_product/${chiTietSanPham.hinhAnh4}" alt="Longtail boats at Phi Phi">
                             </div>
                         </div>
 
@@ -659,15 +664,36 @@
     </c:forEach>
     console.log(listMauSize);
 
-    //Hiển thị số lượng tồn thằng đầu tiên
-    listKichThuoc = document.getElementsByName("kichThuoc");
-    tenKT = listKichThuoc.item(0).value;
+    //Chọn màu sắc theo hình ảnh hiển thị
+    debugger
     listMauSac = document.getElementsByName("mauSac");
-    tenMS = listMauSac.item(0).value;
+    listKichThuoc = document.getElementsByName("kichThuoc");
+    tenKThuoc = listKichThuoc.item(0).value;
+    var tenMauSacHienThi = "";
+    var hinhAnhHienThi = "${chiTietSanPham.hinhAnh1}";
+    listMauSize.forEach(mauSize => {
+        if (mauSize.hinhAnh1 == hinhAnhHienThi && mauSize.tenKT == tenKThuoc){
+            tenMauSacHienThi = mauSize.tenMS;
+        }
+    })
+    for (var i=0; i<listMauSac.length; i++){
+        if (listMauSac.item(i).value == tenMauSacHienThi){
+            document.getElementsByName("mauSac").item(i).checked = true;
+            break
+        }
+    }
 
+    //Hiển thị số lượng tồn
+    var tenMS = "";
+    for (var i=0; i<listMauSac.length; i++){
+        if (listMauSac.item(i).checked){
+            tenMS = listMauSac.item(i).value;
+            break
+        }
+    }
     var sl = 0;
     listMauSize.forEach(mauSize =>{
-        if (mauSize.tenMS == tenMS && mauSize.tenKT == tenKT){
+        if (mauSize.tenMS == tenMS && mauSize.tenKT == tenKThuoc){
             sl = mauSize.soLuong;
         }
     })
@@ -690,15 +716,31 @@
         }
 
         var soLuong = 0;
+        var ha1 = document.getElementById("hinhAnh1");
+        var ha2 = document.getElementById("hinhAnh2");
+        var ha3 = document.getElementById("hinhAnh3");
+        var ha4 = document.getElementById("hinhAnh4");
+        var hinhAnh1 = "";
+        var hinhAnh2 = "";
+        var hinhAnh3 = "";
+        var hinhAnh4 = "";
         listMauSize.forEach(mauSize =>{
             if (mauSize.tenMS == tenMauSac && mauSize.tenKT == tenKichThuoc){
                 soLuong = mauSize.soLuong;
+                hinhAnh1 = mauSize.hinhAnh1;
+                hinhAnh2 = mauSize.hinhAnh2;
+                hinhAnh3 = mauSize.hinhAnh3;
+                hinhAnh4 = mauSize.hinhAnh4;
             }
         })
         if (soLuong < 0 || soLuong == null){
             soLuong = 0;
         }
         document.getElementById("soLuongTon").textContent = soLuong;
+        ha1.src = "/image_product/"+hinhAnh1;
+        ha2.src = "/image_product/"+hinhAnh2;
+        ha3.src = "/image_product/"+hinhAnh3;
+        ha4.src = "/image_product/"+hinhAnh4;
     }
 
     //Hiển thị số lượng tồn sản phẩm theo kích thước
