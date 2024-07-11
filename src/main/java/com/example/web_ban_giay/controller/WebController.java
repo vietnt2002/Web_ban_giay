@@ -1,18 +1,18 @@
 package com.example.web_ban_giay.controller;
 
 import com.example.web_ban_giay.config.UserInfor;
+import com.example.web_ban_giay.entities.KhachHang;
 import com.example.web_ban_giay.repositories.*;
 import com.example.web_ban_giay.response.KichThuocResponse;
 import com.example.web_ban_giay.response.MauSacResponse;
 import com.example.web_ban_giay.response.MauSizeResponse;
 import com.example.web_ban_giay.response.SanPhamResponse;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -32,16 +32,44 @@ public class WebController {
 
     @GetMapping("trang-chu")
     public String getTrangChu(
-            Model model
+            Model model,
+            HttpSession session
     ){
+        //Hiển thị thông tin khách hàng đăng nhập
+        if (UserInfor.ID_KHACH_HANG != null){
+            KhachHang khachHang = khachHangRepo.findById(UserInfor.ID_KHACH_HANG).get();
+            session.setAttribute("khachHang", khachHang);
+        }else {
+            KhachHang khachHang = null;
+            session.setAttribute("khachHang", khachHang);
+        }
+
         List<SanPhamResponse> listSanPhamTrangChu = chiTietSanPhamRepo.getAllTrangChu();
         model.addAttribute("listSanPham", listSanPhamTrangChu);
         return "/view/view_web/trangChu.jsp";
     }
 
     @GetMapping("dang-nhap-view")
-    public String getDangNhapView(){
+    public String getDangNhapView(Model model){
+        model.addAttribute("ListKhachHang", khachHangRepo.findAll());
         return "/view/view_web/dangNhap.jsp";
+    }
+
+    @PostMapping("dang-nhap")
+    public String dangNhap(
+            @RequestParam("taiKhoan") String taiKhoan,
+            RedirectAttributes redirectAttributes
+    ){
+        KhachHang khachHang = khachHangRepo.findByTaiKhoan(taiKhoan);
+        UserInfor.ID_KHACH_HANG = khachHang.getId();
+        redirectAttributes.addFlashAttribute("success", "Đăng nhập thành công");
+        return "redirect:/store-customer/trang-chu";
+    }
+
+    @GetMapping("dang-xuat")
+    public String dangXuat(){
+        UserInfor.ID_KHACH_HANG = null;
+        return "redirect:/store-customer/trang-chu";
     }
 
     @GetMapping("dang-ky-view")
@@ -57,7 +85,6 @@ public class WebController {
         //Lấy ra chi tiết sản phẩm
         SanPhamResponse chiTietSanPham = chiTietSanPhamRepo.findByIdSP(idSP);
         model.addAttribute("chiTietSanPham", chiTietSanPham);
-        System.out.println("--------------------------------tên màu sắc: "+chiTietSanPham.getTenMS());
 
         //Lấy danh sách kích thước theo idSP
         List<KichThuocResponse> listKichThuoc = kichThuocRepo.getKichThuocByIdSP(idSP);

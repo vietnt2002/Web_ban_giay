@@ -74,9 +74,17 @@
                                         <i class="bi bi-person" style="font-size: 20px"></i>
                                     </a>
                                     <ul>
-                                        <li><a href="/store-customer/tai-khoan-cua-toi">Tài khoản của tôi</a></li>
-                                        <li><a href="/store-customer/don-mua">Đơn mua</a></li>
-                                        <li><a href="/store-customer/dang-nhap-view">Đăng nhập</a></li>
+                                        <c:choose>
+                                            <c:when test="${empty sessionScope.khachHang}">
+                                                <li><a style="font-weight: bold;" href="/store-customer/dang-nhap-view">Đăng nhập</a></li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li><a href="/store-customer/tai-khoan-cua-toi">Tài khoản của tôi</a>
+                                                </li>
+                                                <li><a href="/store-customer/don-mua">Đơn mua</a></li>
+                                                <li><a id="dang-xuat" href="/store-customer/dang-xuat">Đăng xuất</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </ul>
                                 </li>
                                 <li class="search">
@@ -426,39 +434,83 @@
     </div>
 </div>
 <!-- quickview product start -->
-<!-- jquery
-        ============================================ -->
+<!-- jquery -->
 <script src="/temp_web/js/vendor/jquery-1.12.1.min.js"></script>
-<!-- bootstrap JS
-        ============================================ -->
+<!-- bootstrap JS -->
 <script src="/temp_web/js/bootstrap.min.js"></script>
-<!-- wow JS
-        ============================================ -->
+<!-- wow JS -->
 <script src="/temp_web/js/wow.min.js"></script>
-<!-- price-slider JS
-        ============================================ -->
+<!-- price-slider JS -->
 <script src="/temp_web/js/jquery-price-slider.js"></script>
-<!-- nivoslider JS
-        ============================================ -->
+<!-- nivoslider JS -->
 <script src="/temp_web/lib/js/jquery.nivo.slider.js"></script>
 <script src="/temp_web/lib/home.js"></script>
-<!-- meanmenu JS
-        ============================================ -->
+<!-- meanmenu JS -->
 <script src="/temp_web/js/jquery.meanmenu.js"></script>
-<!-- owl.carousel JS
-        ============================================ -->
+<!-- owl.carousel JS -->
 <script src="/temp_web/js/owl.carousel.min.js"></script>
-<!-- elevatezoom JS
-        ============================================ -->
+<!-- elevatezoom JS -->
 <script src="/temp_web/js/jquery.elevatezoom.js"></script>
-<!-- scrollUp JS
-        ============================================ -->
+<!-- scrollUp JS -->
 <script src="/temp_web/js/jquery.scrollUp.min.js"></script>
-<!-- plugins JS
-        ============================================ -->
+<!-- plugins JS -->
 <script src="/temp_web/js/plugins.js"></script>
-<!-- main JS
-        ============================================ -->
+<!-- main JS -->
 <script src="/temp_web/js/main.js"></script>
 </body>
+<script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+
+    <c:if test="${not empty error}">
+    Toast.fire({
+        icon: "error",
+        title: "${error}"
+    });
+    </c:if>
+
+    <c:if test="${not empty success}">
+    Toast.fire({
+        icon: "success",
+        title: "${success}"
+    });
+    </c:if>
+</script>
+<script>
+    //Đăng xuất
+    document.getElementById('dang-xuat').addEventListener('click', function (event) {
+        event.preventDefault();
+
+        Swal.fire({
+            title: "Bạn có chắc chắn muốn đăng xuất không?",
+            text: "Bạn sẽ không thể hoàn tác hành động này!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            cancelButtonText: "Hủy",
+            confirmButtonText: "Đăng xuất!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Đã đăng xuất!",
+                    text: "Bạn đã đăng xuất thành công.",
+                    icon: "success"
+                }).then(() => {
+                    window.location.href = document.getElementById('dang-xuat').getAttribute('href');
+                });
+            }
+        });
+    });
+</script>
+
 </html>

@@ -13,51 +13,37 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- favicon
-        ============================================ -->
+    <!-- favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/temp_web/img/favicon.ico">
 
-    <!-- Bootstrap CSS
-        ============================================ -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/temp_web/css/bootstrap.min.css">
-    <!-- Bootstrap CSS
-        ============================================ -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/temp_web/css/font-awesome.min.css">
-    <!-- owl.carousel CSS
-        ============================================ -->
+    <!-- owl.carousel CSS -->
     <link rel="stylesheet" href="/temp_web/css/owl.carousel.css">
     <link rel="stylesheet" href="/temp_web/css/owl.theme.css">
     <link rel="stylesheet" href="/temp_web/css/owl.transitions.css">
-    <!-- jquery-ui CSS
-        ============================================ -->
+    <!-- jquery-ui CSS -->
     <link rel="stylesheet" href="/temp_web/css/jquery-ui.css">
-    <!-- meanmenu CSS
-        ============================================ -->
+    <!-- meanmenu CSS -->
     <link rel="stylesheet" href="/temp_web/css/meanmenu.min.css">
-    <!-- nivoslider CSS
-        ============================================ -->
+    <!-- nivoslider CSS -->
     <link rel="stylesheet" href="/temp_web/lib/css/nivo-slider.css">
     <link rel="stylesheet" href="/temp_web/lib/css/preview.css">
-    <!-- animate CSS
-        ============================================ -->
+    <!-- animate CSS -->
     <link rel="stylesheet" href="/temp_web/css/animate.css">
-    <!-- magic CSS
-        ============================================ -->
+    <!-- magic CSS -->
     <link rel="stylesheet" href="/temp_web/css/magic.css">
-    <!-- normalize CSS
-        ============================================ -->
+    <!-- normalize CSS -->
     <link rel="stylesheet" href="/temp_web/css/normalize.css">
-    <!-- main CSS
-        ============================================ -->
+    <!-- main CSS -->
     <link rel="stylesheet" href="/temp_web/css/main.css">
-    <!-- style CSS
-        ============================================ -->
+    <!-- style CSS -->
     <link rel="stylesheet" href="/temp_web/style.css">
-    <!-- responsive CSS
-        ============================================ -->
+    <!-- responsive CSS -->
     <link rel="stylesheet" href="/temp_web/css/responsive.css">
-    <!-- modernizr JS
-        ============================================ -->
+    <!-- modernizr JS -->
     <script src="/temp_web/js/vendor/modernizr-2.8.3.min.js"></script>
 
     <%--  Bootstrap icon  --%>
@@ -89,9 +75,17 @@
                                         <i class="bi bi-person" style="font-size: 20px"></i>
                                     </a>
                                     <ul>
-                                        <li><a href="/store-customer/tai-khoan-cua-toi">Tài khoản của tôi</a></li>
-                                        <li><a href="/store-customer/don-mua">Đơn mua</a></li>
-                                        <li><a href="/store-customer/dang-nhap-view">Đăng nhập</a></li>
+                                        <c:choose>
+                                            <c:when test="${empty sessionScope.khachHang}">
+                                                <li><a style="font-weight: bold;" href="/store-customer/dang-nhap-view">Đăng nhập</a></li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li><a href="/store-customer/tai-khoan-cua-toi">Tài khoản của tôi</a>
+                                                </li>
+                                                <li><a href="/store-customer/don-mua">Đơn mua</a></li>
+                                                <li><a id="dang-xuat" href="/store-customer/dang-xuat">Đăng xuất</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </ul>
                                 </li>
                                 <li class="search">
@@ -414,20 +408,26 @@
                                     </div>
                                     <div class="product-img">
                                         <a href="/store-customer/chi-tiet-san-pham/${sanPham.idSP}">
-                                            <img src="/image_product/${sanPham.hinhAnh1}" alt="" class="primary-img" style="height: 295px">
+                                            <img src="/image_product/${sanPham.hinhAnh1}" alt="" class="primary-img"
+                                                 style="height: 295px">
                                         </a>
                                     </div>
                                     <div class="product-name text-center">
-                                        <a href="/store-customer/chi-tiet-san-pham/${sanPham.idSP}" title="Fusce aliquam">${sanPham.tenSP}</a>
+                                        <a href="/store-customer/chi-tiet-san-pham/${sanPham.idSP}"
+                                           title="Fusce aliquam">${sanPham.tenSP}</a>
                                     </div>
                                     <div class="product-name text-center">
-                                        <a href="/store-customer/chi-tiet-san-pham/${sanPham.idSP}" title="Fusce aliquam">- ${sanPham.maSP} -</a>
+                                        <a href="/store-customer/chi-tiet-san-pham/${sanPham.idSP}"
+                                           title="Fusce aliquam">- ${sanPham.maSP} -</a>
                                     </div>
                                     <div class="price-rating text-center">
-                                        <span> <fmt:formatNumber value="${sanPham.giaBan}" type="currency" currencySymbol="đ" groupingUsed="true"/> </span>
+                                        <span> <fmt:formatNumber value="${sanPham.giaBan}" type="currency"
+                                                                 currencySymbol="đ" groupingUsed="true"/> </span>
                                     </div>
                                     <div class="actions">
-                                        <a href="/store-customer/chi-tiet-san-pham/${sanPham.idSP}"><button class="cart-btn" title="Add to cart">Xem chi tiết</button></a>
+                                        <a href="/store-customer/chi-tiet-san-pham/${sanPham.idSP}">
+                                            <button class="cart-btn" title="Add to cart">Xem chi tiết</button>
+                                        </a>
                                         <ul class="add-to-link">
                                             <li><a class="modal-view" data-target="#productModal" data-toggle="modal"
                                                    href="#"> <i class="fa fa-search"></i></a></li>
@@ -447,7 +447,8 @@
                                 <li class="current"><a href="#">1</a></li>
                                 <li><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
-                                <li><a href="#"> <img src="/temp_web/img/product/pager_arrow_right.gif" alt=""> </a></li>
+                                <li><a href="#"> <img src="/temp_web/img/product/pager_arrow_right.gif" alt=""> </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -1055,40 +1056,86 @@
     </div>
 </div>
 <!-- quickview product start -->
-<!-- jquery
-        ============================================ -->
+<!-- jquery -->
 <script src="/temp_web/js/vendor/jquery-1.12.1.min.js"></script>
-<!-- bootstrap JS
-        ============================================ -->
+<!-- bootstrap JS -->
 <script src="/temp_web/js/bootstrap.min.js"></script>
-<!-- wow JS
-        ============================================ -->
+<!-- wow JS-->
 <script src="/temp_web/js/wow.min.js"></script>
-<!-- price-slider JS
-        ============================================ -->
+<!-- price-slider JS -->
 <script src="/temp_web/js/jquery-price-slider.js"></script>
-<!-- nivoslider JS
-        ============================================ -->
+<!-- nivoslider JS -->
 <script src="/temp_web/lib/js/jquery.nivo.slider.js"></script>
 <script src="/temp_web/lib/home.js"></script>
-<!-- meanmenu JS
-        ============================================ -->
+<!-- meanmenu JS -->
 <script src="/temp_web/js/jquery.meanmenu.js"></script>
-<!-- owl.carousel JS
-        ============================================ -->
+<!-- owl.carousel JS -->
 <script src="/temp_web/js/owl.carousel.min.js"></script>
-<!-- elevatezoom JS
-        ============================================ -->
+<!-- elevatezoom JS -->
 <script src="/temp_web/js/jquery.elevatezoom.js"></script>
-<!-- scrollUp JS
-        ============================================ -->
+<!-- scrollUp JS -->
 <script src="/temp_web/js/jquery.scrollUp.min.js"></script>
-<!-- plugins JS
-        ============================================ -->
+<!-- plugins JS -->
 <script src="/temp_web/js/plugins.js"></script>
-<!-- main JS
-        ============================================ -->
+<!-- main JS -->
 <script src="/temp_web/js/main.js"></script>
 </body>
+
+<script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+
+    <c:if test="${not empty error}">
+    Toast.fire({
+        icon: "error",
+        title: "${error}"
+    });
+    </c:if>
+
+    <c:if test="${not empty success}">
+    Toast.fire({
+        icon: "success",
+        title: "${success}"
+    });
+    </c:if>
+</script>
+<script>
+    //Đăng xuất
+    document.getElementById('dang-xuat').addEventListener('click', function (event) {
+        event.preventDefault();
+
+        Swal.fire({
+            title: "Bạn có chắc chắn muốn đăng xuất không?",
+            text: "Bạn sẽ không thể hoàn tác hành động này!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            cancelButtonText: "Hủy",
+            confirmButtonText: "Đăng xuất!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Đã đăng xuất!",
+                    text: "Bạn đã đăng xuất thành công.",
+                    icon: "success"
+                }).then(() => {
+                    window.location.href = document.getElementById('dang-xuat').getAttribute('href');
+                });
+            }
+        });
+    });
+</script>
+
+
 </html>
 

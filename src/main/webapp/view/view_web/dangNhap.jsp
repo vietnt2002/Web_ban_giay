@@ -82,9 +82,17 @@
                                         <i class="bi bi-person" style="font-size: 20px"></i>
                                     </a>
                                     <ul>
-                                        <li><a href="/store-customer/tai-khoan-cua-toi">Tài khoản của tôi</a></li>
-                                        <li><a href="/store-customer/don-mua">Đơn mua</a></li>
-                                        <li><a href="/store-customer/dang-nhap-view">Đăng nhập</a></li>
+                                        <c:choose>
+                                            <c:when test="${empty sessionScope.khachHang}">
+                                                <li><a style="font-weight: bold;" href="/store-customer/dang-nhap-view">Đăng nhập</a></li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li><a href="/store-customer/tai-khoan-cua-toi">Tài khoản của tôi</a>
+                                                </li>
+                                                <li><a href="/store-customer/don-mua">Đơn mua</a></li>
+                                                <li><a id="dang-xuat" href="/store-customer/dang-xuat">Đăng xuất</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </ul>
                                 </li>
                                 <li class="search">
@@ -227,9 +235,13 @@
                             <h2>Đăng nhập</h2>
                         </div>
                         <div class="login-form">
-                            <form method="post" action="/store-customer/dang-nhap">
+                            <form method="post" action="/store-customer/dang-nhap" id="dangNhapForm">
                                 <input type="text" id="taiKhoan" name="taiKhoan" placeholder="Tài khoản">
-                                <input type="password" id="matKhau" name="matKhau" placeholder="Mật khẩu" style="margin-bottom: 0px">
+                                <div id="error-taiKhoan" style="color: red"></div>
+
+                                <input type="password" id="matKhau" name="matKhau" placeholder="Mật khẩu" style="margin-top: 25px">
+                                <div id="error-matKhau" style="color: red"></div>
+
                                 <div style="float: right">
                                     <a href="#">Quên mật khẩu?</a>
                                 </div>
@@ -251,6 +263,7 @@
         </div>
     </div>
 </div>
+
 <!-- footer top area start -->
 <div class="footer-top-area">
     <div class="container">
@@ -284,7 +297,7 @@
                         <div class="twitter-article">
                             <div class="twitter-img">
                                 <a href="#">
-                                    <img src="img/twitter/twitter-1.png" alt="">
+                                    <img src="/temp_web/img/twitter/twitter-1.png" alt="">
                                 </a>
                             </div>
                             <div class="twitter-text">
@@ -298,7 +311,7 @@
                         <div class="twitter-article">
                             <div class="twitter-img">
                                 <a href="#">
-                                    <img src="img/twitter/twitter-1.png" alt="">
+                                    <img src="/temp_web/img/twitter/twitter-1.png" alt="">
                                 </a>
                             </div>
                             <div class="twitter-text">
@@ -323,7 +336,7 @@
                             <li><a href="#">Privacy Policy</a></li>
                             <li><a href="#">Your Account</a></li>
                             <li><a href="#">Advanced Search</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="/store-customer/lien-he">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -335,7 +348,7 @@
                     </div>
                     <div class="footer-menu">
                         <ul>
-                            <li><a href="about-us.html">About Us</a></li>
+                            <li><a href="/store-customer/gioi-thieu">About Us</a></li>
                             <li><a href="#">Customer Service</a></li>
                             <li><a href="#">Privacy Policy</a></li>
                             <li><a href="#">Orders and Returns</a></li>
@@ -359,7 +372,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="payment-icon">
-                    <img src="img/payment.png" alt="">
+                    <img src="/temp_web/img/payment.png" alt="">
                 </div>
             </div>
         </div>
@@ -393,9 +406,112 @@
 </body>
 
 <script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
 
+    <c:if test="${not empty error}">
+    Toast.fire({
+        icon: "error",
+        title: "${error}"
+    });
+    </c:if>
+
+    <c:if test="${not empty success}">
+    Toast.fire({
+        icon: "success",
+        title: "${success}"
+    });
+    </c:if>
 </script>
 
+<script>
+    //Chuyển danh sách khách hàng java -> js
+    var listKhachHang = [];
+    <c:forEach varStatus="i" items="${ListKhachHang}" var="khachHang">
+    var KhachHang = {};
+    KhachHang.taiKhoan = '${khachHang.taiKhoan}';
+    KhachHang.matKhau = '${khachHang.matKhau}';
+    listKhachHang.push(KhachHang);
+    </c:forEach>
+
+    document.getElementById('dangNhapForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const taiKhoan = document.getElementById('taiKhoan').value.trim();
+        const matKhau = document.getElementById('matKhau').value.trim();
+
+        let hasError = false;
+        if (!taiKhoan) {
+            document.getElementById('error-taiKhoan').textContent = 'Không được để trống tài khoản!';
+            document.getElementById('taiKhoan').style.border = '1px solid red';
+            hasError = true;
+        } else {
+            document.getElementById('error-taiKhoan').textContent = '';
+            document.getElementById('taiKhoan').style.border = '';
+        }
+
+        if (!matKhau) {
+            document.getElementById('error-matKhau').textContent = 'Không được để trống mật khẩu!';
+            document.getElementById('matKhau').style.border = '1px solid red';
+            hasError = true;
+        } else {
+            document.getElementById('error-matKhau').textContent = '';
+            document.getElementById('matKhau').style.border = '';
+        }
+
+        if (hasError) {
+            return;
+        }
+
+        listKhachHang.forEach(khachHang =>{
+            if (khachHang.taiKhoan == taiKhoan){
+                document.getElementById('error-taiKhoan').textContent = '';
+                document.getElementById('taiKhoan').style.border = '';
+
+                if (khachHang.matKhau == matKhau){
+                    document.getElementById('error-matKhau').textContent = '';
+                    document.getElementById('matKhau').style.border = '';
+
+                    document.getElementById('dangNhapForm').submit();
+                }else {
+                    document.getElementById('error-matKhau').textContent = 'Mật khẩu nhập vào không chính xác!';
+                    document.getElementById('matKhau').style.border = '1px solid red';
+                    return;;
+                }
+            } else {
+                document.getElementById('error-taiKhoan').textContent = 'Tài khoản không tồn tại!';
+                document.getElementById('taiKhoan').style.border = '1px solid red';
+                return;
+            }
+        });
+    });
+
+    //Sự kiện khi input tài khoản có dữ liệu thì xóa báo lỗi
+    document.getElementById("taiKhoan").addEventListener("blur", function() {
+        var taiKhoan = document.getElementById("taiKhoan");
+        if (taiKhoan.value.trim() !== "") {
+            taiKhoan.style.border = "";
+            document.getElementById("error-taiKhoan").textContent = "";
+        }
+    });
+
+    //Sự kiện khi input mật khẩu có dữ liệu thì xóa báo lỗi
+    document.getElementById("matKhau").addEventListener("blur", function() {
+        var matKhau = document.getElementById("matKhau");
+        if (matKhau.value.trim() !== "") {
+            matKhau.style.border = "";
+            document.getElementById("error-matKhau").textContent = "";
+        }
+    });
+</script>
 
 </html>
 
