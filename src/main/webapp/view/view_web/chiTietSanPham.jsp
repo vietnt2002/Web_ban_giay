@@ -70,8 +70,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-7 col-md-offset-3 col-sm-9 hidden-xs">
-                    <div class="call-support">
+                    <div class="call-support" style="display: flex">
                         <p>Gọi hỗ trợ miễn phí: <span> (+84) 123 456 789</span></p>
+                        <p style="position: absolute; right: 0px; font-size: 15px">Xin chào: ${khachHang.hoTen}</p>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-3">
@@ -86,6 +87,7 @@
                                         <c:choose>
                                             <c:when test="${empty sessionScope.khachHang}">
                                                 <li><a style="font-weight: bold;" href="/store-customer/dang-nhap-view">Đăng nhập</a></li>
+                                                <li><a style="font-weight: bold;" href="/store-customer/dang-ky-view">Đăng ký</a></li>
                                             </c:when>
                                             <c:otherwise>
                                                 <li><a href="/store-customer/tai-khoan-cua-toi">Tài khoản của tôi</a>
@@ -782,10 +784,6 @@
         }
 
         var soLuong = 0;
-        var ha1 = document.getElementById("hinhAnh1");
-        var ha2 = document.getElementById("hinhAnh2");
-        var ha3 = document.getElementById("hinhAnh3");
-        var ha4 = document.getElementById("hinhAnh4");
         var hinhAnh1 = "";
         var hinhAnh2 = "";
         var hinhAnh3 = "";
@@ -803,10 +801,10 @@
             soLuong = 0;
         }
         document.getElementById("soLuongTon").textContent = soLuong;
-        ha1.src = "/image_product/"+hinhAnh1;
-        ha2.src = "/image_product/"+hinhAnh2;
-        ha3.src = "/image_product/"+hinhAnh3;
-        ha4.src = "/image_product/"+hinhAnh4;
+        document.getElementById("hinhAnh1").src = "/image_product/"+hinhAnh1;
+        document.getElementById("hinhAnh2").src = "/image_product/"+hinhAnh2;
+        document.getElementById("hinhAnh3").src = "/image_product/"+hinhAnh3;
+        document.getElementById("hinhAnh4").src = "/image_product/"+hinhAnh4;
     }
 
     //Hiển thị số lượng tồn sản phẩm theo kích thước

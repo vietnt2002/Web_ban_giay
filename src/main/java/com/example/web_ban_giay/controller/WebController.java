@@ -3,6 +3,7 @@ package com.example.web_ban_giay.controller;
 import com.example.web_ban_giay.config.UserInfor;
 import com.example.web_ban_giay.entities.KhachHang;
 import com.example.web_ban_giay.repositories.*;
+import com.example.web_ban_giay.request.KhachHangRequest;
 import com.example.web_ban_giay.response.KichThuocResponse;
 import com.example.web_ban_giay.response.MauSacResponse;
 import com.example.web_ban_giay.response.MauSizeResponse;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -39,6 +41,7 @@ public class WebController {
         if (UserInfor.ID_KHACH_HANG != null){
             KhachHang khachHang = khachHangRepo.findById(UserInfor.ID_KHACH_HANG).get();
             session.setAttribute("khachHang", khachHang);
+            model.addAttribute("khachHang", khachHang);
         }else {
             KhachHang khachHang = null;
             session.setAttribute("khachHang", khachHang);
@@ -73,8 +76,30 @@ public class WebController {
     }
 
     @GetMapping("dang-ky-view")
-    public String getDangKyView(){
+    public String getDangKyView(Model model){
+        KhachHangRequest khachHang = new KhachHangRequest();
+        model.addAttribute("khachHang", khachHang);
+        model.addAttribute("ListKhachHang", khachHangRepo.findAll());
         return "/view/view_web/dangKy.jsp";
+    }
+
+    @PostMapping("dang-ky")
+    public String dangKy(
+            @ModelAttribute("khachHang") KhachHangRequest khReq,
+            RedirectAttributes redirectAttributes
+    ){
+        KhachHang khachHang = new KhachHang();
+        khachHang.setHoTen(khReq.getHoTen());
+        khachHang.setSdt(khReq.getSdt());
+        khachHang.setEmail(khReq.getEmail());
+        khachHang.setTaiKhoan(khReq.getTaiKhoan());
+        khachHang.setMatKhau(khReq.getMatKhau());
+        khachHang.setNgayTao(LocalDateTime.now());
+        khachHang.setTrangThai(KhachHangRepository.HOAT_DONG);
+        khachHangRepo.save(khachHang);
+
+        redirectAttributes.addFlashAttribute("success", "Đăng ký tài khoản thành công.");
+        return "redirect:/store-customer/dang-nhap-view";
     }
 
     @GetMapping("chi-tiet-san-pham/{idSP}")

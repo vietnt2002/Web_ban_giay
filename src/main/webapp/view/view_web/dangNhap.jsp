@@ -19,7 +19,8 @@
     <!-- Google Fonts -->
     <link href='../../../fonts.googleapis.com/cssc9f6.css?family=Norican' rel='stylesheet' type='text/css'>
     <link href='../../../fonts.googleapis.com/csse3e5.css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='../../../fonts.googleapis.com/css4c5c.css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='../../../fonts.googleapis.com/css4c5c.css?family=Open+Sans:400,300,600,700,800' rel='stylesheet'
+          type='text/css'>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/temp_web/css/bootstrap.min.css">
@@ -57,10 +58,12 @@
     <!-- SweetAlert2 JS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body>
 <!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
 <![endif]-->
 <!-- Add your site or application content here -->
 <!-- header area start -->
@@ -69,8 +72,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-7 col-md-offset-3 col-sm-9 hidden-xs">
-                    <div class="call-support">
+                    <div class="call-support" style="display: flex">
                         <p>Gọi hỗ trợ miễn phí: <span> (+84) 123 456 789</span></p>
+                        <p style="position: absolute; right: 0px; font-size: 15px">Xin chào: ${khachHang.hoTen}</p>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-3">
@@ -84,13 +88,17 @@
                                     <ul>
                                         <c:choose>
                                             <c:when test="${empty sessionScope.khachHang}">
-                                                <li><a style="font-weight: bold;" href="/store-customer/dang-nhap-view">Đăng nhập</a></li>
+                                                <li><a style="font-weight: bold;" href="/store-customer/dang-nhap-view">Đăng
+                                                    nhập</a></li>
+                                                <li><a style="font-weight: bold;" href="/store-customer/dang-ky-view">Đăng
+                                                    ký</a></li>
                                             </c:when>
                                             <c:otherwise>
                                                 <li><a href="/store-customer/tai-khoan-cua-toi">Tài khoản của tôi</a>
                                                 </li>
                                                 <li><a href="/store-customer/don-mua">Đơn mua</a></li>
-                                                <li><a id="dang-xuat" href="/store-customer/dang-xuat">Đăng xuất</a></li>
+                                                <li><a id="dang-xuat" href="/store-customer/dang-xuat">Đăng xuất</a>
+                                                </li>
                                             </c:otherwise>
                                         </c:choose>
                                     </ul>
@@ -217,7 +225,7 @@
             <div class="col-md-12">
                 <div class="location">
                     <ul>
-                        <li><a href="/store-customer/trang-chu" title="go to homepage">Trang chủ<span>/</span></a>  </li>
+                        <li><a href="/store-customer/trang-chu" title="go to homepage">Trang chủ<span>/</span></a></li>
                         <li><strong>Đăng nhập</strong></li>
                     </ul>
                 </div>
@@ -239,7 +247,8 @@
                                 <input type="text" id="taiKhoan" name="taiKhoan" placeholder="Tài khoản">
                                 <div id="error-taiKhoan" style="color: red"></div>
 
-                                <input type="password" id="matKhau" name="matKhau" placeholder="Mật khẩu" style="margin-top: 25px">
+                                <input type="password" id="matKhau" name="matKhau" placeholder="Mật khẩu"
+                                       style="margin-top: 25px">
                                 <div id="error-matKhau" style="color: red"></div>
 
                                 <div style="float: right">
@@ -251,7 +260,8 @@
                                         <label for="remember">Nhớ mật khẩu</label>
                                     </div>
                                     <div>
-                                        <span style="float: right; padding-top: 20px">Bạn chưa có tài khoản?  <a href="/store-customer/dang-ky-view"> Đăng ký</a></span>
+                                        <span style="float: right; padding-top: 20px">Bạn chưa có tài khoản?  <a
+                                                style="color: red" id="dang-ky" href="/store-customer/dang-ky-view"> Đăng ký</a></span>
                                     </div>
                                     <button type="submit" class="default-btn">Đăng nhập</button>
                                 </div>
@@ -271,7 +281,8 @@
             <div class="col-md-3 col-sm-4">
                 <div class="footer-contact">
                     <img src="/temp_web/img/logo-white.png" alt="">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                        tincidunt.</p>
                     <ul class="address">
                         <li>
                             <span class="fa fa-fax"></span>
@@ -301,7 +312,8 @@
                                 </a>
                             </div>
                             <div class="twitter-text">
-                                <p>Raboda Fashion #Magento #Theme comes up with pure white and grey, which great show your products. Check it: </p>
+                                <p>Raboda Fashion #Magento #Theme comes up with pure white and grey, which great show
+                                    your products. Check it: </p>
                                 <a href="#">https://t.co/iu0OYBwti8</a>
                                 <div class="twitter-time">
                                     <a href="#">16h</a>
@@ -315,7 +327,8 @@
                                 </a>
                             </div>
                             <div class="twitter-text">
-                                <p>Raboda Fashion #Magento #Theme comes up with pure white and grey, which great show your products. Check it: </p>
+                                <p>Raboda Fashion #Magento #Theme comes up with pure white and grey, which great show
+                                    your products. Check it: </p>
                                 <a href="#">https://t.co/iu0OYBwti8</a>
                                 <div class="twitter-time">
                                     <a href="#">16h</a>
@@ -471,31 +484,26 @@
             return;
         }
 
-        listKhachHang.forEach(khachHang =>{
-            if (khachHang.taiKhoan == taiKhoan){
-                document.getElementById('error-taiKhoan').textContent = '';
-                document.getElementById('taiKhoan').style.border = '';
 
-                if (khachHang.matKhau == matKhau){
-                    document.getElementById('error-matKhau').textContent = '';
-                    document.getElementById('matKhau').style.border = '';
-
-                    document.getElementById('dangNhapForm').submit();
-                }else {
-                    document.getElementById('error-matKhau').textContent = 'Mật khẩu nhập vào không chính xác!';
-                    document.getElementById('matKhau').style.border = '1px solid red';
-                    return;;
-                }
+        if (listKhachHang.some(khachHang => khachHang.taiKhoan == taiKhoan)) {
+            document.getElementById('error-taiKhoan').textContent = '';
+            document.getElementById('taiKhoan').style.border = '';
+            if (listKhachHang.some(khachHang => khachHang.taiKhoan == taiKhoan && khachHang.matKhau == matKhau)) {
+                document.getElementById('error-matKhau').textContent = '';
+                document.getElementById('matKhau').style.border = '';
+                document.getElementById('dangNhapForm').submit();
             } else {
-                document.getElementById('error-taiKhoan').textContent = 'Tài khoản không tồn tại!';
-                document.getElementById('taiKhoan').style.border = '1px solid red';
-                return;
+                document.getElementById('error-matKhau').textContent = 'Mật khẩu nhập vào không chính xác!';
+                document.getElementById('matKhau').style.border = '1px solid red';
             }
-        });
+        } else {
+            document.getElementById('error-taiKhoan').textContent = 'Tài khoản không tồn tại!';
+            document.getElementById('taiKhoan').style.border = '1px solid red';
+        }
     });
 
     //Sự kiện khi input tài khoản có dữ liệu thì xóa báo lỗi
-    document.getElementById("taiKhoan").addEventListener("blur", function() {
+    document.getElementById("taiKhoan").addEventListener("blur", function () {
         var taiKhoan = document.getElementById("taiKhoan");
         if (taiKhoan.value.trim() !== "") {
             taiKhoan.style.border = "";
@@ -504,7 +512,7 @@
     });
 
     //Sự kiện khi input mật khẩu có dữ liệu thì xóa báo lỗi
-    document.getElementById("matKhau").addEventListener("blur", function() {
+    document.getElementById("matKhau").addEventListener("blur", function () {
         var matKhau = document.getElementById("matKhau");
         if (matKhau.value.trim() !== "") {
             matKhau.style.border = "";

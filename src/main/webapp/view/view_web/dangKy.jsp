@@ -61,8 +61,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-7 col-md-offset-3 col-sm-9 hidden-xs">
-                    <div class="call-support">
+                    <div class="call-support" style="display: flex">
                         <p>Gọi hỗ trợ miễn phí: <span> (+84) 123 456 789</span></p>
+                        <p style="position: absolute; right: 0px; font-size: 15px">Xin chào: ${khachHang.hoTen}</p>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-3">
@@ -77,6 +78,7 @@
                                         <c:choose>
                                             <c:when test="${empty sessionScope.khachHang}">
                                                 <li><a style="font-weight: bold;" href="/store-customer/dang-nhap-view">Đăng nhập</a></li>
+                                                <li><a style="font-weight: bold;" href="/store-customer/dang-ky-view">Đăng ký</a></li>
                                             </c:when>
                                             <c:otherwise>
                                                 <li><a href="/store-customer/tai-khoan-cua-toi">Tài khoản của tôi</a>
@@ -229,21 +231,32 @@
                             <h2>Đăng ký</h2>
                         </div>
                         <div class="login-form">
-                            <form action="#" method="post">
-                                <input type="text" name="hoTen" placeholder="Họ tên">
-                                <input type="text" name="sdt" placeholder="Số điện thoại">
-                                <input type="text" name="email" placeholder="Email">
-                                <input type="text" name="user-name" placeholder="Tài khoản">
-                                <input type="password" name="user-password" placeholder="Mật khẩu">
-                                <input type="password" name="user-password" placeholder="Nhập lại mật khẩu">
-                                <input name="user-email" placeholder="Email" type="email">
-                                <div style="float: right; padding-top: 20px">
-                                    <span>Bạn đã có tài khoản? <a href="/store-customer/dang-nhap-view">Đăng nhập</a></span>
+                            <sf:form method="post" action="/store-customer/dang-ky" id="dangKyForm" modelAttribute="khachHang">
+                                <sf:input style="margin-top: 00px" type="text" id="hoTen" path="hoTen" placeholder="Họ tên" />
+                                <div id="error-hoTen" style="color: red"></div>
+
+                                <sf:input style="margin-top: 25px" type="text" id="sdt" path="sdt" placeholder="Số điện thoại" />
+                                <div id="error-sdt" style="color: red"></div>
+
+                                <sf:input style="margin-top: 25px" type="text" id="email" path="email" placeholder="Email" />
+                                <div id="error-email" style="color: red"></div>
+
+                                <sf:input style="margin-top: 25px" type="text" id="taiKhoan" path="taiKhoan" placeholder="Tài khoản" />
+                                <div id="error-taiKhoan" style="color: red"></div>
+
+                                <sf:input style="margin-top: 25px" type="password" id="matKhau" path="matKhau" placeholder="Mật khẩu" />
+                                <div id="error-matKhau" style="color: red"></div>
+
+                                <input style="margin-top: 25px" type="password" id="nhapLaiMatKhau" name="nhapLaiMatKhau" placeholder="Nhập lại mật khẩu">
+                                <div id="error-nhapLaiMatKhau" style="color: red"></div>
+
+                                <div style="float: right; padding-top: 40px">
+                                    <span>Bạn đã có tài khoản? <a style="color: red" href="/store-customer/dang-nhap-view">Đăng nhập</a></span>
                                 </div>
-                                <div class="button-box">
+                                <div class="button-box" style="margin-top: 20px">
                                     <button type="submit" class="default-btn">Đăng ký</button>
                                 </div>
-                            </form>
+                            </sf:form>
                         </div>
                     </div>
                 </div>
@@ -251,7 +264,6 @@
         </div>
     </div>
 </div>
-<!-- Đăng ký -->
 
 
 <!-- footer top area start -->
@@ -510,6 +522,181 @@
                 });
             }
         });
+    });
+</script>
+
+<!-- Đăng ký -->
+<script>
+    //Chuyển danh sách khách hàng java -> js
+    var listKhachHang = [];
+    <c:forEach varStatus="i" items="${ListKhachHang}" var="khachHang">
+    var KhachHang = {};
+    KhachHang.sdt = '${khachHang.sdt}';
+    KhachHang.email = '${khachHang.email}';
+    KhachHang.taiKhoan = '${khachHang.taiKhoan}';
+    listKhachHang.push(KhachHang);
+    </c:forEach>
+    console.log(listKhachHang)
+
+    function validatePhoneNumber(phone) {
+        const regex = /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/;
+        return regex.test(phone);
+    }
+
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    document.getElementById('dangKyForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const hoTen = document.getElementById('hoTen').value.trim();
+        const sdt = document.getElementById('sdt').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const taiKhoan = document.getElementById('taiKhoan').value.trim();
+        const matKhau = document.getElementById('matKhau').value.trim();
+        const nhapLaiMatKhau = document.getElementById('nhapLaiMatKhau').value.trim();
+
+        let hasError = false;
+
+        if (!hoTen) {
+            document.getElementById('error-hoTen').textContent = 'Không được để trống họ tên!';
+            document.getElementById('hoTen').style.border = '1px solid red';
+            hasError = true;
+        } else {
+            document.getElementById('error-hoTen').textContent = '';
+            document.getElementById('hoTen').style.border = '';
+        }
+
+        if (!sdt) {
+            document.getElementById('error-sdt').textContent = 'Không được để trống số điện thoại!';
+            document.getElementById('sdt').style.border = '1px solid red';
+            hasError = true;
+        } else if (!validatePhoneNumber(sdt)){
+            document.getElementById('error-sdt').textContent = 'Số điện thoại nhập vào không hợp lệ!';
+            document.getElementById('sdt').style.border = '1px solid red';
+            hasError = true;
+        } else if (listKhachHang.some(khachHang => khachHang.sdt === sdt)){
+            document.getElementById('error-sdt').textContent = 'Số điện thoại đã tồn tại!';
+            document.getElementById('sdt').style.border = '1px solid red';
+            hasError = true;
+        } else {
+            document.getElementById('error-sdt').textContent = '';
+            document.getElementById('sdt').style.border = '';
+        }
+
+        if (!email) {
+            document.getElementById('error-email').textContent = 'Không được để trống email!';
+            document.getElementById('email').style.border = '1px solid red';
+            hasError = true;
+        } else if (!validateEmail(email)){
+            document.getElementById('error-email').textContent = 'Email nhập vào không hợp lệ!';
+            document.getElementById('email').style.border = '1px solid red';
+            hasError = true;
+        }else if (listKhachHang.some(khachHang => khachHang.email === email)){
+            document.getElementById('error-email').textContent = 'Email đã tồn tại!';
+            document.getElementById('email').style.border = '1px solid red';
+            hasError = true;
+        } else {
+            document.getElementById('error-email').textContent = '';
+            document.getElementById('email').style.border = '';
+        }
+
+        if (!taiKhoan) {
+            document.getElementById('error-taiKhoan').textContent = 'Không được để trống tài khoản!';
+            document.getElementById('taiKhoan').style.border = '1px solid red';
+            hasError = true;
+        } else if (listKhachHang.some(khachHang => khachHang.taiKhoan === taiKhoan)){
+            document.getElementById('error-taiKhoan').textContent = 'Tài khoản đã tồn tại!';
+            document.getElementById('taiKhoan').style.border = '1px solid red';
+            hasError = true;
+        } else {
+            document.getElementById('error-taiKhoan').textContent = '';
+            document.getElementById('taiKhoan').style.border = '';
+        }
+
+        if (!matKhau) {
+            document.getElementById('error-matKhau').textContent = 'Không được để trống mật khẩu!';
+            document.getElementById('matKhau').style.border = '1px solid red';
+            hasError = true;
+        } else {
+            document.getElementById('error-matKhau').textContent = '';
+            document.getElementById('matKhau').style.border = '';
+        }
+
+        if (!nhapLaiMatKhau) {
+            document.getElementById('error-nhapLaiMatKhau').textContent = 'Không được để trống nhập lại mật khẩu!';
+            document.getElementById('nhapLaiMatKhau').style.border = '1px solid red';
+            hasError = true;
+        } else if (nhapLaiMatKhau !== matKhau){
+            document.getElementById('error-nhapLaiMatKhau').textContent = 'Mật khẩu nhập lại không chính xác!';
+            document.getElementById('nhapLaiMatKhau').style.border = '1px solid red';
+            hasError = true;
+        }
+        else {
+            document.getElementById('error-nhapLaiMatKhau').textContent = '';
+            document.getElementById('nhapLaiMatKhau').style.border = '';
+        }
+
+        if (hasError) {
+            return;
+        }
+
+        document.getElementById('dangKyForm').submit();
+    });
+
+    //Sự kiện khi input họ tên có dữ liệu thì xóa báo lỗi
+    document.getElementById("hoTen").addEventListener("blur", function() {
+        var hoTen = document.getElementById("hoTen");
+        if (hoTen.value.trim() !== "") {
+            hoTen.style.border = "";
+            document.getElementById("error-hoTen").textContent = "";
+        }
+    });
+
+    //Sự kiện khi input sdt có dữ liệu thì xóa báo lỗi
+    document.getElementById("sdt").addEventListener("blur", function() {
+        var sdt = document.getElementById("sdt");
+        if (sdt.value.trim() !== "") {
+            sdt.style.border = "";
+            document.getElementById("error-sdt").textContent = "";
+        }
+    });
+
+    //Sự kiện khi input email có dữ liệu thì xóa báo lỗi
+    document.getElementById("email").addEventListener("blur", function() {
+        var email = document.getElementById("email");
+        if (email.value.trim() !== "") {
+            email.style.border = "";
+            document.getElementById("error-email").textContent = "";
+        }
+    });
+
+    //Sự kiện khi input tài khoản có dữ liệu thì xóa báo lỗi
+    document.getElementById("taiKhoan").addEventListener("blur", function() {
+        var taiKhoan = document.getElementById("taiKhoan");
+        if (taiKhoan.value.trim() !== "") {
+            taiKhoan.style.border = "";
+            document.getElementById("error-taiKhoan").textContent = "";
+        }
+    });
+
+    //Sự kiện khi input mật khẩu có dữ liệu thì xóa báo lỗi
+    document.getElementById("matKhau").addEventListener("blur", function() {
+        var matKhau = document.getElementById("matKhau");
+        if (matKhau.value.trim() !== "") {
+            matKhau.style.border = "";
+            document.getElementById("error-matKhau").textContent = "";
+        }
+    });
+
+    //Sự kiện khi input nhập lại mật khẩu có dữ liệu thì xóa báo lỗi
+    document.getElementById("nhapLaiMatKhau").addEventListener("blur", function() {
+        var nhapLaiMatKhau = document.getElementById("nhapLaiMatKhau");
+        if (nhapLaiMatKhau.value.trim() !== "") {
+            nhapLaiMatKhau.style.border = "";
+            document.getElementById("error-nhapLaiMatKhau").textContent = "";
+        }
     });
 </script>
 
