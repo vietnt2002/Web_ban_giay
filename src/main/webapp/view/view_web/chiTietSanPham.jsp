@@ -303,7 +303,7 @@
                             </label>
                             <div class="input-box" style="display: flex">
                                 <c:forEach varStatus="i" items="${listKichThuoc}" var="kichThuoc">
-                                    <div class="form-check form-check-inline" style="margin-right: 15px">
+                                    <div class="form-check form-check-inline kichThuocOption" style="margin-right: 15px">
                                         <input class="form-check-input" onchange="onchangeByKichThuoc('${kichThuoc.tenKT}')" type="radio" name="kichThuoc" id="${kichThuoc.idKT}" value="${kichThuoc.tenKT}" <c:if test="${i.index==0}">checked</c:if>>
                                         <label class="form-check-label" for="${kichThuoc.idKT}">${kichThuoc.tenKT}</label>
                                     </div>
@@ -772,7 +772,7 @@
     //-------------------------------------------------------
 
 
-    //Hiển thị số lượng tồn sản phẩm theo màu sắc
+    //Hiển thị số lượng tồn sản phẩm và kích thước theo màu sắc
     function onchangeByMauSac(tenMauSac){
         debugger
         tenKichThuoc = "";
@@ -783,6 +783,12 @@
             }
         }
 
+        getSoLuongHinhAnhByMauSacKichThuoc(tenMauSac, tenKichThuoc);
+        filterKichThuocByMauSac(tenMauSac);
+    }
+
+    //Lấy ra số lượng và hình ảnh theo màu sắc và kích thước
+    function getSoLuongHinhAnhByMauSacKichThuoc(tenMauSac, tenKichThuoc){
         var soLuong = 0;
         var hinhAnh1 = "";
         var hinhAnh2 = "";
@@ -805,6 +811,36 @@
         document.getElementById("hinhAnh2").src = "/image_product/"+hinhAnh2;
         document.getElementById("hinhAnh3").src = "/image_product/"+hinhAnh3;
         document.getElementById("hinhAnh4").src = "/image_product/"+hinhAnh4;
+    }
+
+    // Lọc các tùy chọn kích thước dựa trên màu sắc
+    function filterKichThuocByMauSac(tenMauSac) {
+        var kichThuocOptions = document.querySelectorAll('.kichThuocOption');
+        var currentCheckedInput = document.querySelector('input[name="kichThuoc"]:checked');
+        var currentCheckedValue = currentCheckedInput ? currentCheckedInput.value : null;
+        var isCurrentCheckedDisabled = true;
+        kichThuocOptions.forEach(option => {
+            var input = option.querySelector('input[name="kichThuoc"]');
+            var isMatch = listMauSize.some(item => item.tenMS === tenMauSac && item.tenKT === input.value);
+            input.disabled = !isMatch;
+            if (input.value === currentCheckedValue && isMatch) {
+                isCurrentCheckedDisabled = false;
+            }
+        });
+        // Nếu không tìm thấy kích thước theo màu sắc thì sẽ check và hiển thị thằng đầu tiên
+        var visibleOptions = Array.from(kichThuocOptions).filter(option => !option.querySelector('input[name="kichThuoc"]').disabled);
+        if (isCurrentCheckedDisabled){
+            if (visibleOptions.length > 0) {
+                if (currentCheckedValue){
+                    currentCheckedInput.checked = true;
+                    getSoLuongHinhAnhByMauSacKichThuoc(tenMauSac, currentCheckedValue);
+                }
+                if (currentCheckedInput){
+                    listKichThuoc.item(0).checked = true;
+                    getSoLuongHinhAnhByMauSacKichThuoc(tenMauSac, listKichThuoc.item(0).value);
+                }
+            }
+        }
     }
 
     //Hiển thị số lượng tồn sản phẩm theo kích thước
